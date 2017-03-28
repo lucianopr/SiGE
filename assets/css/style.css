@@ -29,7 +29,7 @@ and open the template in the editor.
 }
 .item-list{
     max-height: 420px;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 .item-list table{
     width: 100%;

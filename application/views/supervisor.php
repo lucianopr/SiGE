@@ -27,6 +27,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </thead>
             <tbody>
                 <!--foreach supervisor from supervisor DB table there will be a row with the following structure-->
+                <?php for($i=1; $i<=18; $i++){?>
                 <tr>
                     <td>ASDASDASDASD</td>
                     <td>ASDASDASD 9999</td>
@@ -35,78 +36,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <td><a href="#"><i class="fa fa-pencil" aria-hidden="true"></i> Editar</a></td>
                     <td><a href="#"><i class="fa fa-remove" aria-hidden="true"></i> Eliminar</a></td>
                 </tr>
-                <tr>
-                    <td>ASDASDASDASD</td>
-                    <td>ASDASDASD 9999</td>
-                    <td>ASDASDASD ASDASD</td>
-                    <td>ASDASD999999</td>
-                    <td><a href="#"><i class="fa fa-pencil" aria-hidden="true"></i> Editar</a></td>
-                    <td><a href="#"><i class="fa fa-remove" aria-hidden="true"></i> Eliminar</a></td>
-                </tr>
-                <tr>
-                    <td>ASDASDASDASD</td>
-                    <td>ASDASDASD 9999</td>
-                    <td>ASDASDASD ASDASD</td>
-                    <td>ASDASD999999</td>
-                    <td><a href="#"><i class="fa fa-pencil" aria-hidden="true"></i> Editar</a></td>
-                    <td><a href="#"><i class="fa fa-remove" aria-hidden="true"></i> Eliminar</a></td>
-                </tr>
-                <tr>
-                    <td>ASDASDASDASD</td>
-                    <td>ASDASDASD 9999</td>
-                    <td>ASDASDASD ASDASD</td>
-                    <td>ASDASD999999</td>
-                    <td><a href="#"><i class="fa fa-pencil" aria-hidden="true"></i> Editar</a></td>
-                    <td><a href="#"><i class="fa fa-remove" aria-hidden="true"></i> Eliminar</a></td>
-                </tr>
-                <tr>
-                    <td>ASDASDASDASD</td>
-                    <td>ASDASDASD 9999</td>
-                    <td>ASDASDASD ASDASD</td>
-                    <td>ASDASD999999</td>
-                    <td><a href="#"><i class="fa fa-pencil" aria-hidden="true"></i> Editar</a></td>
-                    <td><a href="#"><i class="fa fa-remove" aria-hidden="true"></i> Eliminar</a></td>
-                </tr>
-                <tr>
-                    <td>ASDASDASDASD</td>
-                    <td>ASDASDASD 9999</td>
-                    <td>ASDASDASD ASDASD</td>
-                    <td>ASDASD999999</td>
-                    <td><a href="#"><i class="fa fa-pencil" aria-hidden="true"></i> Editar</a></td>
-                    <td><a href="#"><i class="fa fa-remove" aria-hidden="true"></i> Eliminar</a></td>
-                </tr>
-                <tr>
-                    <td>ASDASDASDASD</td>
-                    <td>ASDASDASD 9999</td>
-                    <td>ASDASDASD ASDASD</td>
-                    <td>ASDASD999999</td>
-                    <td><a href="#"><i class="fa fa-pencil" aria-hidden="true"></i> Editar</a></td>
-                    <td><a href="#"><i class="fa fa-remove" aria-hidden="true"></i> Eliminar</a></td>
-                </tr>
-                <tr>
-                    <td>ASDASDASDASD</td>
-                    <td>ASDASDASD 9999</td>
-                    <td>ASDASDASD ASDASD</td>
-                    <td>ASDASD999999</td>
-                    <td><a href="#"><i class="fa fa-pencil" aria-hidden="true"></i> Editar</a></td>
-                    <td><a href="#"><i class="fa fa-remove" aria-hidden="true"></i> Eliminar</a></td>
-                </tr>
-                <tr>
-                    <td>ASDASDASDASD</td>
-                    <td>ASDASDASD 9999</td>
-                    <td>ASDASDASD ASDASD</td>
-                    <td>ASDASD999999</td>
-                    <td><a href="#"><i class="fa fa-pencil" aria-hidden="true"></i> Editar</a></td>
-                    <td><a href="#"><i class="fa fa-remove" aria-hidden="true"></i> Eliminar</a></td>
-                </tr>
-                <tr>
-                    <td>ASDASDASDASD</td>
-                    <td>ASDASDASD 9999</td>
-                    <td>ASDASDASD ASDASD</td>
-                    <td>ASDASD999999</td>
-                    <td><a href="#"><i class="fa fa-pencil" aria-hidden="true"></i> Editar</a></td>
-                    <td><a href="#"><i class="fa fa-remove" aria-hidden="true"></i> Eliminar</a></td>
-                </tr>
+                <?php } ?>
             </tbody>            
         </table>
     </div>

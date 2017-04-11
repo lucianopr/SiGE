@@ -12,7 +12,7 @@ and open the template in the editor.
     width: 90%;
     overflow: auto;
     padding: 20px;
-    margin: 0 5%;
+    margin: 40px 5%;
     background-color: #ffffff;
     box-sizing: border-box;
     border: 1px dotted #D0D0D0;
@@ -41,4 +41,11 @@ and open the template in the editor.
 .item-list table td{
     padding: 5px 6px;
     border-right: 1px solid #D0D0D0;
+}
+.search-fields{
+    padding: 8px 15px;
+    display: none;
+}
+.checkbox-container{
+    display: none;
 }

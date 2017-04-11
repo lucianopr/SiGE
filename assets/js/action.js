@@ -4,5 +4,11 @@
  * and open the template in the editor.
  */
 $(document).ready(function(){
-    
+    $('.search-link').click(function(){ 
+        searchbox_toggle();
+    });
 });
+
+function searchbox_toggle(){
+    $('.search-fields').slideToggle();
+}

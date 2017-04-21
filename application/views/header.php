@@ -26,7 +26,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   <ul class="nav navbar-nav">
                     <li><a href="<?php echo base_url(); ?>expediente">Expedientes</a></li>
                     <li><a href="<?php echo base_url(); ?>supervisor">Supervisores</a></li>
-                    <li><a href="#">Sección-circuito-zona</a></li>
+                    <li><a href="<?php echo base_url(); ?>seccion">Sección-circuito-zona</a></li>
                   </ul>
                 </div><!-- /.navbar-collapse -->
               </div><!-- /.container-fluid -->

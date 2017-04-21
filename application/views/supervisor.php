@@ -75,3 +75,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </table>
     </div>
 </div>
+
+<!--pop up de Nuevo Supervisor-->
+<div class="edit-popup">
+    <!--header-->
+    <div class="popup-head">
+        <h3>Nuevo Supervisor:</h3>
+    </div>
+    <!--formulario-->
+        <form action="">
+            
+        </form>
+    <div>
+        
+    </div>    
+</div>

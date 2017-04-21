@@ -49,3 +49,17 @@ and open the template in the editor.
 .checkbox-container{
     display: none;
 }
+.edit-popup{
+    width: 50%;
+    min-width: 500px;
+    box-sizing: border-box;
+    position: absolute;
+    top: 15%;
+    left: 25%;
+    background-color: #ffffff;
+    padding: 12px;
+    border: 1px solid #D0D0D0;
+}
+.popup-head{
+    background-color: #DEE1FF;
+}

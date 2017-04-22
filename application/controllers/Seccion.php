@@ -18,4 +18,15 @@ class Seccion extends CI_Controller {
             $this->load->view('seccion', $data);
             $this->load->view('footer');
 	}
+        
+        public function nueva(){
+            $this->load->model('seccion_model');
+            $nombre = $_POST['nombre_zona'];
+            
+            $result = $this->seccion_model->save_zona($nombre);
+            
+            die(var_dump($result));
+            
+        }
+        
 }

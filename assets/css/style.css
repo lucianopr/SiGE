@@ -7,7 +7,11 @@ and open the template in the editor.
     Created on : 27/03/2017, 15:52:45
     Author     : luciano
 */
-
+thead td{
+    font-weight: bold;
+    text-align: center;
+    background-color: #efefef;
+}
 .main-content{
     width: 90%;
     overflow: auto;
@@ -50,6 +54,7 @@ and open the template in the editor.
     display: none;
 }
 .edit-popup{
+    display: none;
     width: 50%;
     min-width: 500px;
     box-sizing: border-box;
@@ -59,6 +64,9 @@ and open the template in the editor.
     background-color: #ffffff;
     padding: 12px;
     border: 1px solid #D0D0D0;
+}
+.edit-popup input[type="text"]{
+    width: 280px;
 }
 .popup-head{
     background-color: #DEE1FF;

@@ -30,11 +30,29 @@ function newboxbox_toggle(){
 //funciones de SECCION
 function nueva_zona(){
     var nombre_zona = $('#nueva_zona').val();
-    
-    $.ajax({
-        url: '/seccion/nueva',
-        method: 'POST',
-        data: 'nombre_zona='+nombre_zona
-    });
-    
+    if (nombre_zona != ''){    
+        $.ajax({
+            url: '/seccion/nueva',
+            method: 'POST',
+            data: 'nombre_zona='+nombre_zona,
+            success: function(response){
+                if (response == 'already exists'){
+                    alert('Error: ya existe una sección con el nombre '+nombre_zona);
+                }else if (response == true){
+                    alert('La nueva sección/zona fue guardada con éxito.');
+                    location.reload();
+                }else{
+                    alert('Ups.. ocurrió algún error al momento de guardar el nuevo nombre. Intente de nuevo.');
+                }
+            },
+            error: function(data){
+                alert('ocurrió un error ('+data+'). Intente de nuevo.');
+            }
+        });
+        $('#nueva_zona').val('');
+    }else{
+        alert('El nombre de la nueva sección no puede quedar vacío.');
+    }
+    $('.edit-popup').slideToggle();
 }
+//fin funciones de SECCION

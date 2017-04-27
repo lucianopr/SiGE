@@ -25,7 +25,7 @@ class Seccion extends CI_Controller {
             
             $result = $this->seccion_model->save_zona($nombre);
             
-            die(var_dump($result));
+            echo $result;
             
         }
         

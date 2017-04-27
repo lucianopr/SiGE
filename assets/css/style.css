@@ -7,12 +7,16 @@ and open the template in the editor.
     Created on : 27/03/2017, 15:52:45
     Author     : luciano
 */
-
+thead td{
+    font-weight: bold;
+    text-align: center;
+    background-color: #efefef;
+}
 .main-content{
     width: 90%;
     overflow: auto;
     padding: 20px;
-    margin: 0 5%;
+    margin: 40px 5%;
     background-color: #ffffff;
     box-sizing: border-box;
     border: 1px dotted #D0D0D0;
@@ -41,4 +45,29 @@ and open the template in the editor.
 .item-list table td{
     padding: 5px 6px;
     border-right: 1px solid #D0D0D0;
+}
+.search-fields{
+    padding: 8px 15px;
+    display: none;
+}
+.checkbox-container{
+    display: none;
+}
+.edit-popup{
+    display: none;
+    width: 50%;
+    min-width: 500px;
+    box-sizing: border-box;
+    position: absolute;
+    top: 15%;
+    left: 25%;
+    background-color: #ffffff;
+    padding: 12px;
+    border: 1px solid #D0D0D0;
+}
+.edit-popup input[type="text"]{
+    width: 280px;
+}
+.popup-head{
+    background-color: #DEE1FF;
 }

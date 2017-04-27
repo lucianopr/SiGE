@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
 <div class="page-header">
-  <h1>Supervisores</h1>
+  <h1>Expedientes</h1>
 </div>
 <div class="page-content">
     <div class="options-bar">
@@ -11,12 +11,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <a href="#"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo</a>
     </div>
     <div class="search-fields">
-        <h3>Buscar Supervisores:</h3>
+        <h3>Buscar Expediente:</h3>
         <form action="#">
             <input name="nombre_supervisor" placeholder="Nombre" type="text"/>
             <input type="button" value="Región"/>
             <div class="checkbox-container">
-                <h4>Filtrar supervisor por región asignada</h4>
+                <h4>Filtrar expediente por región asignada</h4>
                 <hr />
                 <p><input type="checkbox" name="check_region" value="r1" /> Región 1</p>
                 <p><input type="checkbox" name="check_region" value="r2" /> Región 1</p>
@@ -25,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
             <input type="button" value="Zona"/>
             <div class="checkbox-container">
-                <h4>Filtrar supervisor por zona</h4>
+                <h4>Filtrar expediente por zona</h4>
                 <hr />
                 <input type="checkbox" name="check_zona" value="z1" />
                 <input type="checkbox" name="check_zona" value="z2" />
@@ -36,7 +36,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <input type="text" placeholder="Nro Interno" name="num_interno" />
             <input type="button" value="Escuela Nro"/>
             <div class="checkbox-container">
-                <h4>Filtrar supervisor por nro de escuela</h4>
+                <h4>Filtrar expediente por nro de escuela</h4>
                 <hr />
                 <input type="checkbox" name="check_escuela" value="1" />
                 <input type="checkbox" name="check_escuela" value="2" />
@@ -46,7 +46,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <input type="submit" value="Buscar" name="buscar" />            
         </form>        
     </div>
-    <h3>Lista de Supervisores:</h3>
+    <h3>Lista de Expedientes:</h3>
     <div class="item-list">
         <table>
             <thead>
@@ -74,19 +74,4 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </tbody>            
         </table>
     </div>
-</div>
-
-<!--pop up de Nuevo Supervisor-->
-<div class="edit-popup">
-    <!--header-->
-    <div class="popup-head">
-        <h3>Nuevo Supervisor:</h3>
-    </div>
-    <!--formulario-->
-        <form action="">
-            
-        </form>
-    <div>
-        
-    </div>    
 </div>

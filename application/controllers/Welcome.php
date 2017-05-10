@@ -11,31 +11,28 @@ class Welcome extends CI_Controller {
         $this->load->helper('url');    
         $this->load->helper('cookie');
         $this->load->model('usuario_model');
-        $this->load->library('session');
-        
-         if(!empty($_SESSION['id_user'])){
-             //echo $this->session->userdata('dni') . $this->session->userdata('nombre'); 
-             $rows = $this->usuario_model->validar_usuario($this->session->userdata('dni'), $this->session->userdata('password'));  
-            if ( $rows != null)
-            {                
-                $this->session->set_userdata(array(
-                'id_user'=>$rows->id_user,
-                'nombre'=>$rows->nombre,
-                'codigo'=>$rows->codigo,
-                'administrador'=>$rows->administrador,
-                'dni'=>$rows->dni,
-                'password'=>$rows->password,   
-                'status'=> TRUE
-                    ));            
-                echo "datos ok"; 
-            
-                redirect('supervisor');
-                
-            }
+        $this->load->library('session');        
+//         if(!empty($_SESSION['id_user'])){
+//             //echo $this->session->userdata('dni') . $this->session->userdata('nombre'); 
+//             $rows = $this->usuario_model->validar_usuario($this->session->userdata('dni'), $this->session->userdata('password'));  
+//            if ( $rows != null)
+//            {                
+//                $this->session->set_userdata(array(
+//                'id_user'=>$rows->id_user,
+//                'nombre'=>$rows->nombre,
+//                'codigo'=>$rows->codigo,
+//                'administrador'=>$rows->administrador,
+//                'dni'=>$rows->dni,
+//                'password'=>$rows->password,   
+//                'status'=> TRUE
+//                    ));            
+//                echo "datos ok";            
+//                redirect('expediente');                
+//            }
              
              
             //redirect('expediente');
-         }
+         //}
     }     
     
     
@@ -97,7 +94,7 @@ class Welcome extends CI_Controller {
             
             $this->session->set_flashdata('message', 'Datos Correctos');
             
-            redirect('supervisor');
+            redirect('expediente');
         }
         else
         {$this->session->set_flashdata('message', 'El Usuario no Existe...');
@@ -125,9 +122,9 @@ class Welcome extends CI_Controller {
     public function logoutaction()
     { 
         $this->session->sess_destroy(); 
+        
         //$this->refresh();
-        //redirect('Welcome');//, 'refresh'
-        redirect();
+        redirect('welcome');//, 'refresh'
         
         //echo "logout";         
     }

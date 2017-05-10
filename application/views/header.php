@@ -1,5 +1,17 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+//die(var_dump(isset($_SESSION['id_user'])));
+//if($_SESSION['id_user'] == null || !isset($_SESSION['id_user'])){
+//if(session_id() == '' || !isset($_SESSION)){ 
+//redirect('welcome');
+//}
+//if(empty($_SESSION['id_user'])){
+  //  redirect('welcome');
+//
+//$this->load->library('session'); 
+//if(!$this->session->userdata("id_user")){
+//    redirect('welcome');   
+//}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -27,6 +39,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <li><a href="<?php echo base_url(); ?>expediente">Expedientes</a></li>
                     <li><a href="<?php echo base_url(); ?>supervisor">Supervisores</a></li>
                     <li><a href="<?php echo base_url(); ?>seccion">Sección-circuito-zona</a></li>
+                    <li><a href="<?php echo base_url(); ?>welcome/logoutaction">Salir</a></li>
                   </ul>
                 </div><!-- /.navbar-collapse -->
               </div><!-- /.container-fluid -->

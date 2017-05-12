@@ -61,12 +61,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </thead>
             <tbody>
                 <!--foreach supervisor from supervisor DB table there will be a row with the following structure-->
-                <?php for($i=1; $i<=18; $i++){?>
+                <?php 
+                $seccion = Array();
+                foreach ($secciones as $sec){
+                    $sec_id = $sec->id_zona;
+                    $sec_name = $sec->nombre_zona;
+                    $seccion[$sec_id] = $sec_name;
+                }
+                
+                foreach ($supervisores as $supervisor) {?>
                 <tr>
-                    <td>ASDASDASDASD</td>
-                    <td>ASDASDASD 9999</td>
-                    <td>ASDASDASD ASDASD</td>
-                    <td>ASDASD999999</td>
+                    <td><?php echo $supervisor->nombre; ?></td>
+                    <td><?php echo $supervisor->domicilio; ?></td>
+                    <td><?php echo $supervisor->localidad; ?></td>
+                    <td><?php $id_sec = $supervisor->id_zona; echo $seccion[$id_sec];?></td>
                     <td><a href="#"><i class="fa fa-pencil" aria-hidden="true"></i> Editar</a></td>
                     <td><a href="#"><i class="fa fa-remove" aria-hidden="true"></i> Eliminar</a></td>
                 </tr>

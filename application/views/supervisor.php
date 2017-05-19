@@ -52,16 +52,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <thead>
                 <tr>
                     <td>Nombre</td>
-                    <td>Domicilio</td>
-                    <td>Localidad</td>
+                    <td>DNI</td>
                     <td>Sección</td>
-                    <td><i class="fa fa-pencil" aria-hidden="true"></i> Editar</td>
+                    <td>Localidad</td>
+                    <td><i class="fa fa-pencil" aria-hidden="true"></i> Ver/Editar</td>
                     <td><i class="fa fa-remove" aria-hidden="true"></i> Eliminar</td>
                 </tr>
             </thead>
             <tbody>
-                <!--foreach supervisor from supervisor DB table there will be a row with the following structure-->
                 <?php 
+                //organizar un array con los id y nombre de cada seccion en la BD --> [id=>nombre, id2=>nombre2,...,idn=>nombren];
                 $seccion = Array();
                 foreach ($secciones as $sec){
                     $sec_id = $sec->id_zona;
@@ -70,13 +70,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 }
                 
                 foreach ($supervisores as $supervisor) {?>
-                <tr>
-                    <td><?php echo $supervisor->nombre; ?></td>
-                    <td><?php echo $supervisor->domicilio; ?></td>
-                    <td><?php echo $supervisor->localidad; ?></td>
+                <tr id="<?php echo $supervisor->id_supervisor;?>">
+                    <td id="nombre_sup_<?php echo $supervisor->id_supervisor;?>"><?php echo $supervisor->nombre; ?></td>
+                    <td><?php echo $supervisor->dni; ?></td>
                     <td><?php $id_sec = $supervisor->id_zona; echo $seccion[$id_sec];?></td>
-                    <td><a href="#"><i class="fa fa-pencil" aria-hidden="true"></i> Editar</a></td>
-                    <td><a href="#"><i class="fa fa-remove" aria-hidden="true"></i> Eliminar</a></td>
+                    <td><?php echo $supervisor->localidad; ?></td>
+                    <td><a href="#"><i class="fa fa-pencil" aria-hidden="true"></i> Ver/Editar</a></td>
+                    <td><a class="eliminar-supervisor" href="#"><i class="fa fa-remove" aria-hidden="true"></i> Eliminar</a></td>
                 </tr>
                 <?php } ?>
             </tbody>            
@@ -85,16 +85,70 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 
 <!--pop up de Nuevo Supervisor-->
-<div class="edit-popup">
-    <!--header-->
+<div class="edit-popup" style="display:block;">
     <div class="popup-head">
         <h3>Nuevo Supervisor:</h3>
     </div>
-    <!--formulario-->
-        <form action="">
-            
-        </form>
     <div>
-        
-    </div>    
+        <form action="<?php echo base_url();?>supervisor/nuevo">
+            <!--nivel-->
+            Nivel:
+            <select name="nivel">
+                <option></option>
+            </select>
+            <!--modalidad-->
+            Modalidad:
+            <select name="modalidad">
+            <?php foreach ($modalidades as $modalidad) { ?>
+                <option value="<?php echo $modalidad->id;?>"><?php echo $modalidad->nombre; ?></option>  
+            <?php } ?>
+            </select>
+            <!--zona/secc/niv-->
+            Sección:
+            <select name="seccion">
+            <?php foreach ($secciones as $seccion) { ?>
+                <option value="<?php echo $seccion->id_zona;?>"><?php echo $seccion->nombre_zona; ?></option>  
+            <?php } ?>
+            </select>
+            <!--situacion revista-->
+            Situación revista:
+            <select name="situacion">
+                <option></option>
+            </select>
+            <!--nombre y ap-->
+            <input type="text" id="nombre_nuevo_sup" placeholder="Nombre y Apellido" name="nombre" />
+            <!--telefono-->
+            <input type="tel" placeholder="Teléfono" name="tel" />
+            <!--email-->
+            <input type="email" placeholder="Email" name="email" />
+            <!--dni-->
+            <input type="text" id="dni_nuevo_sup" placeholder="Nro de documento" name="documento" />
+            <!--domicilio-->
+            <input type="text" placeholder="Domicilio" name="domicilio" />
+            <!--localidad-->
+            <input type="text" placeholder="Localidad" name="localidad" />
+            <!--Codigo postal-->
+            <input type="text" placeholder="Código postal" name="cp" />
+            <!--submit is hidden, gets fired up with "guardar button" bellow-->
+            <input id="nuevo_sup_submit" type="submit" style="display: none;" />
+        </form>
+    </div>
+    <div>
+        <input id="guardar_supervisor" type="button" value="Guardar" />
+        <input id="cancelar" type="button" value="Cerrar" />
+    </div>
+</div>
+
+<!--eliminar supervisor popup-->
+<div id="eliminar_popup" class="edit-popup">
+    <div class="popup-head">
+        <h3>Eliminar Supervisor:</h3>
+    </div>
+    <div>
+        <p id="eliminar_msj"></p>
+        <input id="eliminar_nombre" type="hidden" />
+        <input id="id_eliminar" type="hidden" />
+        <input id="eliminar_supervisor" type="button" value="Eliminar" />
+        <input id="cancelar" type="button" value="Cancelar" />
+    </div>
 </div>

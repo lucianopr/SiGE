@@ -12,7 +12,6 @@ class Seccion extends CI_Controller {
             $data = Array(
                 'secciones' => $all_secciones
             );
-//            die(var_dump($data));
             
             $this->load->view('header');
             $this->load->view('seccion', $data);

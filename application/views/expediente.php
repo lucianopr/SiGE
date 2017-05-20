@@ -24,7 +24,7 @@ if(!$this->session->userdata("id_user")){
                 <p><input type="checkbox" name="check_region" value="r1" /> Región 1</p>
                 <p><input type="checkbox" name="check_region" value="r2" /> Región 1</p>
                 <p><input type="checkbox" name="check_region" value="r3" /> Región 1</p>
-                <p><input type="checkbox" name="check_region" value="r4" /> Reigón 1</p>
+                <p><input type="checkbox" name="check_region" value="r4" /> Región 1</p>
             </div>
             <input type="button" value="Zona"/>
             <div class="checkbox-container">

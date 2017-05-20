@@ -43,6 +43,26 @@ $(document).ready(function(){
         eliminar_zona(id);
     });
     
+    $('.eliminar-supervisor').click(function(event){
+        event.preventDefault();
+        var id = $(this).parent().parent().attr('id');
+        var nombre = $('#nombre_sup_'+id).html();
+        show_eliminar_supervisor(id, nombre);
+    });
+    $('#eliminar_supervisor').click(function(){
+        var id = $('#id_eliminar').val();
+        eliminar_supervisor(id);
+    });
+    $('#guardar_supervisor').click(function(){
+        var nombre = $('#nombre_nuevo_sup').val();
+        var dni = $('#dni_nuevo_sup').val();
+        if (dni === '' || nombre === ''){
+            alert('Complete los campos "Nombre" y "Documento" por favor.');
+        }else{
+            $('#nuevo_sup_submit').click();
+        }
+    });
+    
 });
 
 function searchbox_toggle(){
@@ -131,3 +151,29 @@ function eliminar_zona(id){
     });
 }
 //fin funciones de SECCION
+
+//funciones de SUPERVISOR
+function show_eliminar_supervisor(id, nombre){
+    $('#eliminar_nombre').val(nombre);
+    $('#id_eliminar').val(id);
+    $('#eliminar_msj').html('Esta por eliminar al supervisor '+nombre+'. Realmente quiere eliminarlo?');
+    $('#eliminar_popup').slideToggle();
+}
+function eliminar_supervisor(id){
+    $.ajax({
+        url: '/supervisor/eliminar',
+        method: 'POST',
+        data: 'id='+id,
+        success: function(result){
+            if (result === '1' || result === true){
+                alert('El supervisor ha sido eliminado.');
+                location.reload();
+            }else{
+                alert('Ups.. ocurrió algún error al intentar eliminar el supervisor. Intente de nuevo.');
+            }
+        },
+        error: function(data){
+            alert('ocurrió un error ('+data+'). Intente de nuevo o contacte al administrador del sistema.');
+        }
+    });
+}

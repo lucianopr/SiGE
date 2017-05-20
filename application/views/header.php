@@ -12,18 +12,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 //if(!$this->session->userdata("id_user")){
 //    redirect('welcome');   
 //}
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
-    <head>
+    <head>        
         <meta charset="utf-8">
         <title>SiGE - Gestión de Expedientes</title>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/bootstrap.min.css" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/style.css" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/fondo.css" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/font-awesome/css/font-awesome.min.css" />
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.min.js" ></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/bootstrap.min.js" ></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/action.js" ></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/fondos.js" ></script>
     </head>
     <body>
         <header>

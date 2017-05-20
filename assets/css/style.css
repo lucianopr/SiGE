@@ -67,6 +67,7 @@ tbody tr:hover{
     background-color: #ffffff;
     padding: 12px;
     border: 1px solid #D0D0D0;
+    z-index: 1;
 }
 .edit-popup input[type="text"]{
     width: 280px;

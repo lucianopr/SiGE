@@ -1,10 +1,11 @@
 <div class="page-header">
+    
   <h1>Sección - Circuito - Zona</h1>
 </div>
 <div class="page-content">
     <div class="options-bar">
         <!--<a href="#" class="search-link"><i class="fa fa-search" aria-hidden="true"></i> Buscar</a>-->
-        <a class="new-link" href="#"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo</a>
+        <a class="new-link" href="#" id="abrir_popup"><i  class="fa fa-plus" aria-hidden="true"></i> Nuevo</a>
     </div>
     <h3>Lista de Sec/niv/zona:</h3>
     <div class="item-list">
@@ -31,9 +32,12 @@
 </div>
 
 <!--nueva zona PopUp-->
-<div id="nueva_zona_popup" class="edit-popup">
+<div id="nueva_zona_popup" class="edit-popup" >
     <div class="popup-head">
+        <div class="close"><a href="#" id="cerrar_popup_nuevo"><i class="fa fa-window-close" aria-hidden="true"></i>
+</a></div>
         <h3>Nueva Sección/Circuito/Zona:</h3>
+         
     </div>
     <div>
         <input id="nueva_zona" type="text" placeholder="Ingrese el nombre de la nueva sección" />
@@ -44,6 +48,8 @@
 <!--editar zona PopUp-->
 <div id="editar_zona_popup" class="edit-popup">
     <div class="popup-head">
+        <div class="close"><a href="#" id="cerrar_popup_edit"><i class="fa fa-window-close" aria-hidden="true"></i>
+</a></div>
         <h3>Editar Sección/Circuito/Zona:</h3>
     </div>
     <div>
@@ -56,8 +62,11 @@
 <!--eliminar zona popup-->
 <div id="eliminar_popup" class="edit-popup">
     <div class="popup-head">
+        <div class="close"><a href="#" id="cerrar_popup_eliminar"><i class="fa fa-window-close" aria-hidden="true"></i>
+</a></div>
         <h3>Eliminar Sección/Circuito/Zona:</h3>
     </div>
+    
     <div>
         <p id="eliminar_msj"></p>
         <input id="eliminar_nombre_zona" type="hidden" />
@@ -66,3 +75,8 @@
         <input id="cancelar" type="button" value="Cancelar" />
     </div>
 </div>
+
+<div id="fondo_gris" class="gray-backgroud">
+    
+</div>
+

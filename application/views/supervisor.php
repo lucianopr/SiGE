@@ -1,5 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+if(!$this->session->userdata("id_user")){
+    redirect('welcome');   
+}
 ?>
 
 <div class="page-header">

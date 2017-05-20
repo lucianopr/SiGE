@@ -8,6 +8,7 @@ class Seccion extends CI_Controller {
             $this->load->helper('url');
             $this->load->model('seccion_model');
             
+            
             $all_secciones = $this->seccion_model->get_all_seccion();
             $data = Array(
                 'secciones' => $all_secciones

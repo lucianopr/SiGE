@@ -1,5 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+if(!$this->session->userdata("id_user")){
+    redirect('welcome');   
+}
 ?>
 
 <div class="page-header">
@@ -14,14 +17,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <h3>Buscar Expediente:</h3>
         <form action="#">
             <input name="nombre_supervisor" placeholder="Nombre" type="text"/>
-            <input type="button" value="Región"/>
+            <input type="button" value="Región" id="checkbox_region"/>
             <div class="checkbox-container">
                 <h4>Filtrar expediente por región asignada</h4>
                 <hr />
                 <p><input type="checkbox" name="check_region" value="r1" /> Región 1</p>
                 <p><input type="checkbox" name="check_region" value="r2" /> Región 1</p>
                 <p><input type="checkbox" name="check_region" value="r3" /> Región 1</p>
-                <p><input type="checkbox" name="check_region" value="r4" /> Región 1</p>
+                <p><input type="checkbox" name="check_region" value="r4" /> Reigón 1</p>
             </div>
             <input type="button" value="Zona"/>
             <div class="checkbox-container">

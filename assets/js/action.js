@@ -7,15 +7,15 @@ $(document).ready(function(){
     
     $('.search-link').click(function(){ 
         searchbox_toggle();
-    });
+    });    
     
     $('.new-link').click(function(){ 
         newboxbox_toggle();
     });
     
 //    funciones de SECCION
-    $('#guardar_zona').click(function(){
-        nueva_zona();
+    $('#guardar_zona').click(function(){                
+        nueva_zona();        
     });
     $('.edit-action').click(function(event){
         event.preventDefault();
@@ -29,7 +29,7 @@ $(document).ready(function(){
         if (nombre !== ''){
             guardar_edit_zona(id, nombre);
         }else{
-            alert('Introduzca el nombre de la seccion');
+            alert('Introduzca el nombre de la sección');
         }
     });
     $('.eliminar-action').click(function(event){
@@ -51,6 +51,7 @@ function searchbox_toggle(){
 function newboxbox_toggle(){
     $('#nueva_zona_popup').slideToggle();
 }
+
 
 //funciones de SECCION
 function nueva_zona(){

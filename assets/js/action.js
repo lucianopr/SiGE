@@ -108,6 +108,9 @@ $(document).ready(function(){
     $('#nueva_situacion').change(function(){
         $('#nueva_sit_opt').val($(this).val());
     });
+    $('#new_supervisor').click(function(){
+        $('#new_sup_pop').slideToggle();
+    });
     
 });
 

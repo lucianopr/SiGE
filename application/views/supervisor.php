@@ -8,7 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="page-content">
     <div class="options-bar">
         <a href="#" class="search-link"><i class="fa fa-search" aria-hidden="true"></i> Buscar</a>
-        <a href="#"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo</a>
+        <a href="#" id="new_supervisor"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo</a>
     </div>
     <div class="search-fields">
         <h3>Buscar Supervisores:</h3>
@@ -85,7 +85,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 
 <!--pop up de Nuevo Supervisor-->
-<div class="edit-popup" style="display:block;">
+<div id="new_sup_pop" class="edit-popup">
     <div class="popup-head">
         <h3>Nuevo Supervisor:</h3>
     </div>

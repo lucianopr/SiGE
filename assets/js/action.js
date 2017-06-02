@@ -13,7 +13,7 @@ $(document).ready(function(){
         newboxbox_toggle();
     });
     
-//    funciones de SECCION
+//    funciones de SECCION ////////////////////////////////////////////////////////////////
     $('#guardar_zona').click(function(){
         nueva_zona();
     });
@@ -43,6 +43,7 @@ $(document).ready(function(){
         eliminar_zona(id);
     });
     
+//  funciones de SUPERVISOR ////////////////////////////////////////////////////////////////
     $('.eliminar-supervisor').click(function(event){
         event.preventDefault();
         var id = $(this).parent().parent().attr('id');
@@ -58,9 +59,54 @@ $(document).ready(function(){
         var dni = $('#dni_nuevo_sup').val();
         if (dni === '' || nombre === ''){
             alert('Complete los campos "Nombre" y "Documento" por favor.');
+            $('#nombre_nuevo_sup').focus();
         }else{
             $('#nuevo_sup_submit').click();
         }
+    });
+    $('#new_niv_sel').change(function(){
+        var elm = $(this);
+        if (elm.val() === 'new'){
+            $('#nuevo_nivel').show();
+        }else{
+            $('#nuevo_nivel').hide();
+        }
+    });
+    $('#new_mod_sel').change(function(){
+        var elm = $(this);
+        if (elm.val() === 'new'){
+            $('#nueva_modalidad').show();
+        }else{
+            $('#nueva_modalidad').hide();
+        }
+    });
+    $('#new_sec_sel').change(function(){
+        var elm = $(this);
+        if (elm.val() === 'new'){
+            $('#nueva_seccion').show();
+        }else{
+            $('#nueva_seccion').hide();
+        }
+    });
+    $('#new_sit_sel').change(function(){
+        var elm = $(this);
+        if (elm.val() === 'new'){
+            $('#nueva_situacion').show();
+        }else{
+            $('#nueva_situacion').hide();
+        }
+    });
+    $('#nuevo_nivel').change(function(){
+        $('#nuevo_niv_opt').val($(this).val());
+    });
+    $('#nueva_modalidad').change(function(){
+        $('#nueva_mod_opt').val($(this).val());
+    });
+    $('#nueva_seccion').change(function(){
+        $('#nueva_sec_opt').val($(this).val());
+    });
+    $('#nueva_situacion').change(function(){
+        $('#nueva_sit_opt').val($(this).val());
     });
     
 });

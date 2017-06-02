@@ -73,5 +73,73 @@ class Supervisor_model extends CI_Model {
         $query = $this->db->get('modalidad');
         return $query->result();
     }
+    
+    public function get_sitprev(){
+        $this->db->order_by('situacion', 'asc');
+        $query = $this->db->get('situacion_revista');
+        return $query->result();
+    }
+    
+    public function get_niveles(){
+        $this->db->order_by('nombre', 'asc');
+        $query = $this->db->get('nivel_supervisor');
+        return $query->result();
+    }
+    
+    public function get_nivel($id){
+        $this->db->where('id', $id);
+        $query = $this->db->get('nivel_supervisor');
+        return $query->result();
+    }    
+    public function nuevo_nivel($n){
+        $data = Array(
+            'nombre' => $n
+        );
+        $this->db->insert('nivel_supervisor', $data);
+        $insert_id = $this->db->insert_id();
+        return $insert_id;
+    }
+    
+    public function get_modalidad($id){
+        $this->db->where('id', $id);
+        $query = $this->db->get('modalidad');
+        return $query->result();
+    }    
+    public function nueva_modalidad($n){
+        $data = Array(
+            'nombre' => $n
+        );
+        $this->db->insert('modalidad', $data);
+        $insert_id = $this->db->insert_id();
+        return $insert_id;
+    }
+    
+    public function get_seccion($id){
+        $this->db->where('id_zona', $id);
+        $query = $this->db->get('zona');
+        return $query->result();
+    }    
+    public function nueva_seccion($n){
+        $data = Array(
+            'nombre' => $n
+        );
+        $this->db->insert('zona', $data);
+        $insert_id = $this->db->insert_id();
+        return $insert_id;
+    }
+    
+    public function get_situacion($id){
+        $this->db->where('id', $id);
+        $query = $this->db->get('situacion_revista');
+        return $query->result();
+    }
+    public function nueva_situacion($n){
+        $data = Array(
+            'nombre' => $n
+        );
+        $this->db->insert('situacion_revista', $data);
+        $insert_id = $this->db->insert_id();
+        return $insert_id;
+    }
 
 }

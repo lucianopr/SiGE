@@ -5,10 +5,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Supervisor extends CI_Controller {
     
 	public function index(){
-<<<<<<< HEAD
             $this->load->library('session'); 
-            $this->load->helper('url');            
-=======
+            $this->load->helper('url');
             $this->load->helper('url');   
             $this->load->model('supervisor_model');
             $this->load->model('seccion_model');
@@ -20,7 +18,6 @@ class Supervisor extends CI_Controller {
                 'secciones' => $all_secciones,
                 'modalidades' => $all_modalidades
             );
->>>>>>> 6da0311aaedd9870a051df0fd904a047b844cdc1
             $this->load->view('header');
             $this->load->view('supervisor', $data);
             $this->load->view('footer');

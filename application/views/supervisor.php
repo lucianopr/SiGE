@@ -78,7 +78,7 @@ if(!$this->session->userdata("id_user")){
                     <td><?php echo $supervisor->dni; ?></td>
                     <td><?php $id_sec = $supervisor->id_zona; echo $seccion[$id_sec];?></td>
                     <td><?php echo $supervisor->localidad; ?></td>
-                    <td><a href="#"><i class="fa fa-pencil" aria-hidden="true"></i> Ver/Editar</a></td>
+                    <td><a class="edit-supervisor" href="#"><i class="fa fa-pencil" aria-hidden="true"></i> Ver/Editar</a></td>
                     <td><a class="eliminar-supervisor" href="#"><i class="fa fa-remove" aria-hidden="true"></i> Eliminar</a></td>
                 </tr>
                 <?php } ?>
@@ -181,6 +181,87 @@ if(!$this->session->userdata("id_user")){
         <input id="cancelar_supervisor" type="button" value="Cancelar" />
     </div>
 </div>
+
 <div id="fondo_gris" class="gray-backgroud">
-    
+
+
+<!--pop up de Editar/ver Supervisor-->
+<div id="edit_sup_pop" class="edit-popup">
+    <div class="popup-head">
+        <h3>Supervisor:</h3>
+    </div>
+    <div>
+        <form action="<?php echo base_url();?>supervisor/edit">
+            <input type="hidden" id="edit_sup_id" name="edit_sup_id" value="" />
+            <!--nivel-->
+            <div>
+                Nivel:
+                <select id="new_niv_sel2" name="nivel">
+                    <option value=""></option>
+                    <option id="nuevo_niv_opt2" value="new">Nuevo</option>
+                <?php foreach ($niveles as $nivel) { ?>
+                    <option value="<?php echo $nivel->id;?>"><?php echo $nivel->nombre; ?></option>  
+                <?php } ?>
+                </select>
+                <input style="display: none;" type="text" id="nuevo_nivel2" name="nuevo_nivel" placeholder="Ingrese el nuevo nivel" />
+            </div>
+            <!--modalidad-->
+            <div>
+                Modalidad:
+                <select id="new_mod_sel2" name="modalidad">
+                    <option value=""></option>
+                    <option id="nueva_mod_opt2" value="new">Nueva</option>
+                <?php foreach ($modalidades as $modalidad) { ?>
+                    <option value="<?php echo $modalidad->id;?>"><?php echo $modalidad->nombre; ?></option>  
+                <?php } ?>
+                </select>
+                <input style="display: none;" type="text" id="nueva_modalidad2" name="nueva_modalidad" placeholder="Ingrese la nueva modalidad" />
+            </div>
+            <!--zona/secc/niv-->
+            <div>
+                Sección:
+                <select id="new_sec_sel2" name="seccion">
+                    <option value=""></option>
+                    <option id="nueva_sec_opt2" value="new">Nueva</option>
+                <?php foreach ($secciones as $seccion) { ?>
+                    <option value="<?php echo $seccion->id_zona;?>"><?php echo $seccion->nombre_zona; ?></option>  
+                <?php } ?>
+                </select>
+                <input style="display: none;" type="text" id="nueva_seccion2" name="nueva_seccion" placeholder="Ingrese la nueva sección" />
+            </div>
+            <!--situacion revista-->
+            <div>
+                Situación revista:
+                <select id="new_sit_sel2" name="situacion">
+                    <option value=""></option>
+                    <option id="nueva_sit_opt2" value="new">Nueva</option>
+                <?php foreach ($sitprevistas as $sit) { ?>
+                    <option value="<?php echo $sit->id;?>"><?php echo $sit->situacion; ?></option>  
+                <?php } ?>
+                </select>
+                <input style="display: none;" type="text" id="nueva_situacion2" name="nueva_situacion" placeholder="Ingrese la nueva situación revista" />
+            </div>
+            <!--nombre y ap-->
+            <input type="text" id="nombre_nuevo_sup2" placeholder="Nombre y Apellido" name="nombre" />
+            <!--telefono-->
+            <input type="tel" id="tel_sup_edit" placeholder="Teléfono" name="tel" />
+            <!--email-->
+            <input type="email" id="email_sup_edit" placeholder="Email" name="email" />
+            <!--dni-->
+            <input type="text" id="dni_nuevo_sup2" placeholder="Nro de documento" name="documento" />
+            <!--domicilio-->
+            <input type="text" id="domic_sup_edit" placeholder="Domicilio" name="domicilio" />
+            <!--localidad-->
+            <input type="text"id="localidad_sup_edit" placeholder="Localidad" name="localidad" />
+            <!--Codigo postal-->
+            <input type="text" id="cp_sup_edit" placeholder="Código postal" name="cp" />
+            <!--submit is hidden, gets fired up with "guardar button" bellow-->
+            <input id="nuevo_sup_submit2" type="submit" style="display: none;" />
+        </form>
+    </div>
+    <div>
+        <input id="guardar_supervisor2" type="button" value="Guardar" />
+        <input id="cancelar2" type="button" value="Cerrar" />
+    </div>
+
 </div>

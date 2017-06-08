@@ -57,7 +57,8 @@ class Supervisor_model extends CI_Model {
             'localidad' => $d['localidad'],
             'cod_postal' => $d['cp'],
             'tel' => $d['tel'],
-            'id_sit_revista' => $d['situacion']
+            'id_sit_revista' => $d['situacion'],
+            'email' => $d['email']
         );
         $this->db->where('dni', $d['documento']);
         $query = $this->db->get('supervisor');
@@ -140,6 +141,29 @@ class Supervisor_model extends CI_Model {
         $this->db->insert('situacion_revista', $data);
         $insert_id = $this->db->insert_id();
         return $insert_id;
+    }
+    public function get_supervisor($id){
+        $this->db->where('id_supervisor', $id);
+        $query = $this->db->get('supervisor');
+        $result = $query->result();
+        return $result;
+    }
+    public function edit($d){
+        $data = Array(
+            'nombre' => $d['nombre'],
+            'id_zona' => $d['seccion'],
+            'id_nivel' => $d['nivel'],
+            'id_modalidad' => $d['modalidad'],
+            'dni' => $d['documento'],
+            'domicilio' => $d['domicilio'],
+            'localidad' => $d['localidad'],
+            'cod_postal' => $d['cp'],
+            'tel' => $d['tel'],
+            'id_sit_revista' => $d['situacion'],
+            'email' => $d['email']
+        );
+        $this->db->where('id_supervisor', $d['edit_sup_id']);
+        return $this->db->update('supervisor', $data);
     }
 
 }

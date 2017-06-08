@@ -111,6 +111,21 @@ $(document).ready(function(){
     $('#new_supervisor').click(function(){
         $('#new_sup_pop').slideToggle();
     });
+    $('.edit-supervisor').click(function(e){
+        e.preventDefault();
+        var id_sup = $(this).parent().parent().attr('id');
+        ver_supervisor(id_sup);
+    });
+    $('#guardar_supervisor2').click(function(){
+        var nombre = $('#nombre_nuevo_sup2').val();
+        var dni = $('#dni_nuevo_sup2').val();
+        if (dni === '' || nombre === ''){
+            alert('Complete los campos "Nombre" y "Documento" por favor.');
+            $('#nombre_nuevo_sup').focus();
+        }else{
+            $('#nuevo_sup_submit2').click();
+        }
+    });
     
 });
 
@@ -224,4 +239,34 @@ function eliminar_supervisor(id){
             alert('ocurrió un error ('+data+'). Intente de nuevo o contacte al administrador del sistema.');
         }
     });
+}
+function ver_supervisor(id){
+    $.ajax({
+        url: '/supervisor/get_supervisor',
+        method: 'GET',
+        data: 'id='+id,
+        success: function(result){
+            var sup = JSON.parse(result);
+            sup = sup[0];
+            poblar_edit_popup(sup);
+            $('#edit_sup_pop').slideToggle();
+        },
+        error: function(data){
+            alert('ocurrió un error ('+data+'). Intente de nuevo o contacte al administrador del sistema.');
+        }
+    });
+}
+function poblar_edit_popup(s){
+    $('#edit_sup_id').val(s.id_supervisor);
+    $('#new_niv_sel2').val(s.id_nivel);
+    $('#new_mod_sel2').val(s.id_modalidad);
+    $('#new_sec_sel2').val(s.id_zona);
+    $('#new_sit_sel2').val(s.id_sit_revista);
+    $('#nombre_nuevo_sup2').val(s.nombre);
+    $('#tel_sup_edit').val(s.tel);
+    $('#email_sup_edit').val(s.email);
+    $('#dni_nuevo_sup2').val(s.dni);
+    $('#domic_sup_edit').val(s.domicilio);
+    $('#localidad_sup_edit').val(s.localidad);
+    $('#cp_sup_edit').val(s.cod_postal);
 }

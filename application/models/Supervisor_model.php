@@ -151,17 +151,29 @@ class Supervisor_model extends CI_Model {
     public function edit($d){
         $data = Array(
             'nombre' => $d['nombre'],
-            'id_zona' => $d['seccion'],
-            'id_nivel' => $d['nivel'],
-            'id_modalidad' => $d['modalidad'],
+//            'id_zona' => $d['seccion'],
+//            'id_nivel' => $d['nivel'],
+//            'id_modalidad' => $d['modalidad'],
             'dni' => $d['documento'],
             'domicilio' => $d['domicilio'],
             'localidad' => $d['localidad'],
             'cod_postal' => $d['cp'],
             'tel' => $d['tel'],
-            'id_sit_revista' => $d['situacion'],
+//            'id_sit_revista' => $d['situacion'],
             'email' => $d['email']
         );
+        if ($d['seccion'] !== ''){
+            $data['id_zona'] = $d['seccion'];
+        }
+        if ($d['nivel'] !== ''){
+            $data['id_nivel'] = $d['nivel'];
+        }
+        if ($d['modalidad'] !== ''){
+            $data['id_modalidad'] = $d['modalidad'];
+        }
+        if ($d['situacion'] !== ''){
+            $data['id_sit_revista'] = $d['situacion'];
+        }
         $this->db->where('id_supervisor', $d['edit_sup_id']);
         return $this->db->update('supervisor', $data);
     }

@@ -17,6 +17,10 @@ $(document).ready(function(){
         $('#fondo_gris').fadeIn('slow');     
         return false;
     });
+    $('#new_supervisor').click(function(){        
+        $('#fondo_gris').fadeIn('slow');     
+        return false;
+    });
     $('.eliminar-action').click(function(){        
         $('#fondo_gris').fadeIn('slow');     
         return false;
@@ -25,7 +29,10 @@ $(document).ready(function(){
         $('#fondo_gris').fadeIn('slow');     
         return false;
     });
-    
+    $('.edit-supervisor').click(function(){        
+        $('#fondo_gris').fadeIn('slow');     
+        return false;
+    });
     $('#cerrar_popup_nuevo').click(function(){
         $(this).parent().parent().parent('.edit-popup').fadeOut('slow');
         $('#fondo_gris').fadeOut('slow');        
@@ -51,5 +58,12 @@ $(document).ready(function(){
         $('#fondo_gris').fadeOut('slow');        
         return false;
     });
+    $('#cancelar2').click(function(){
+        $(this).parent().parent('.edit-popup').fadeOut('slow');
+        $('#fondo_gris').fadeOut('slow');        
+        return false;
+    });
+    
+    
 });
 

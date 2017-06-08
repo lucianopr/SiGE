@@ -248,7 +248,7 @@ function ver_supervisor(id){
         success: function(result){
             var sup = JSON.parse(result);
             sup = sup[0];
-            poblar_edit_popup(sup);
+            poblar_edit_popup(sup);            
             $('#edit_sup_pop').slideToggle();
         },
         error: function(data){

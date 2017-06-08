@@ -181,9 +181,7 @@ if(!$this->session->userdata("id_user")){
         <input id="cancelar_supervisor" type="button" value="Cancelar" />
     </div>
 </div>
-
-<div id="fondo_gris" class="gray-backgroud">
-
+<div id="fondo_gris" class="gray-backgroud"></div>
 
 <!--pop up de Editar/ver Supervisor-->
 <div id="edit_sup_pop" class="edit-popup">

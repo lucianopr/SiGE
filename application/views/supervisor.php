@@ -11,7 +11,7 @@ if(!$this->session->userdata("id_user")){
 <div class="page-content">
     <div class="options-bar">
         <a href="#" class="search-link"><i class="fa fa-search" aria-hidden="true"></i> Buscar</a>
-        <a href="#"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo</a>
+        <a href="#" id="new_supervisor"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo</a>
     </div>
     <div class="search-fields">
         <h3>Buscar Supervisores:</h3>
@@ -88,36 +88,60 @@ if(!$this->session->userdata("id_user")){
 </div>
 
 <!--pop up de Nuevo Supervisor-->
-<div class="edit-popup" style="display:block;">
+<div id="new_sup_pop" class="edit-popup">
     <div class="popup-head">
         <h3>Nuevo Supervisor:</h3>
     </div>
     <div>
         <form action="<?php echo base_url();?>supervisor/nuevo">
             <!--nivel-->
-            Nivel:
-            <select name="nivel">
-                <option></option>
-            </select>
+            <div>
+                Nivel:
+                <select id="new_niv_sel" name="nivel">
+                    <option value=""></option>
+                    <option id="nuevo_niv_opt" value="new">Nuevo</option>
+                <?php foreach ($niveles as $nivel) { ?>
+                    <option value="<?php echo $nivel->id;?>"><?php echo $nivel->nombre; ?></option>  
+                <?php } ?>
+                </select>
+                <input style="display: none;" type="text" id="nuevo_nivel" name="nuevo_nivel" placeholder="Ingrese el nuevo nivel" />
+            </div>
             <!--modalidad-->
-            Modalidad:
-            <select name="modalidad">
-            <?php foreach ($modalidades as $modalidad) { ?>
-                <option value="<?php echo $modalidad->id;?>"><?php echo $modalidad->nombre; ?></option>  
-            <?php } ?>
-            </select>
+            <div>
+                Modalidad:
+                <select id="new_mod_sel" name="modalidad">
+                    <option value=""></option>
+                    <option id="nueva_mod_opt" value="new">Nueva</option>
+                <?php foreach ($modalidades as $modalidad) { ?>
+                    <option value="<?php echo $modalidad->id;?>"><?php echo $modalidad->nombre; ?></option>  
+                <?php } ?>
+                </select>
+                <input style="display: none;" type="text" id="nueva_modalidad" name="nueva_modalidad" placeholder="Ingrese la nueva modalidad" />
+            </div>
             <!--zona/secc/niv-->
-            Sección:
-            <select name="seccion">
-            <?php foreach ($secciones as $seccion) { ?>
-                <option value="<?php echo $seccion->id_zona;?>"><?php echo $seccion->nombre_zona; ?></option>  
-            <?php } ?>
-            </select>
+            <div>
+                Sección:
+                <select id="new_sec_sel" name="seccion">
+                    <option value=""></option>
+                    <option id="nueva_sec_opt" value="new">Nueva</option>
+                <?php foreach ($secciones as $seccion) { ?>
+                    <option value="<?php echo $seccion->id_zona;?>"><?php echo $seccion->nombre_zona; ?></option>  
+                <?php } ?>
+                </select>
+                <input style="display: none;" type="text" id="nueva_seccion" name="nueva_seccion" placeholder="Ingrese la nueva sección" />
+            </div>
             <!--situacion revista-->
-            Situación revista:
-            <select name="situacion">
-                <option></option>
-            </select>
+            <div>
+                Situación revista:
+                <select id="new_sit_sel" name="situacion">
+                    <option value=""></option>
+                    <option id="nueva_sit_opt" value="new">Nueva</option>
+                <?php foreach ($sitprevistas as $sit) { ?>
+                    <option value="<?php echo $sit->id;?>"><?php echo $sit->situacion; ?></option>  
+                <?php } ?>
+                </select>
+                <input style="display: none;" type="text" id="nueva_situacion" name="nueva_situacion" placeholder="Ingrese la nueva situación revista" />
+            </div>
             <!--nombre y ap-->
             <input type="text" id="nombre_nuevo_sup" placeholder="Nombre y Apellido" name="nombre" />
             <!--telefono-->
@@ -145,6 +169,8 @@ if(!$this->session->userdata("id_user")){
 <!--eliminar supervisor popup-->
 <div id="eliminar_popup" class="edit-popup">
     <div class="popup-head">
+         <div class="close"><a href="#" id="cerrar_popup_eliminar"><i class="fa fa-window-close" aria-hidden="true"></i>
+</a></div>
         <h3>Eliminar Supervisor:</h3>
     </div>
     <div>
@@ -152,6 +178,9 @@ if(!$this->session->userdata("id_user")){
         <input id="eliminar_nombre" type="hidden" />
         <input id="id_eliminar" type="hidden" />
         <input id="eliminar_supervisor" type="button" value="Eliminar" />
-        <input id="cancelar" type="button" value="Cancelar" />
+        <input id="cancelar_supervisor" type="button" value="Cancelar" />
     </div>
+</div>
+<div id="fondo_gris" class="gray-backgroud">
+    
 </div>

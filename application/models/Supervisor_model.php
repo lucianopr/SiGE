@@ -8,38 +8,6 @@ class Supervisor_model extends CI_Model {
         return $query->result();
     }
     
-//    public function save_zona($nombre){
-//        
-//        $data = Array(
-//            'nombre_zona' => $nombre
-//        );
-//        
-//        $this->db->where('nombre_zona', $nombre);
-//        $query = $this->db->get('zona');
-//        
-//        if ($query->num_rows() == 0){
-//            return $this->db->insert('zona', $data);
-//        }else{
-//            return 'already exists';
-//        }
-//        
-//    }
-    
-//    public function edit_zona($id, $nombre){
-//        $data = Array(
-//            'nombre_zona' => $nombre
-//        );
-//        $this->db->where('nombre_zona', $nombre);
-//        $query = $this->db->get('zona');
-//        
-//        if ($query->num_rows() === 0){
-//            $this->db->where('id_zona', $id);
-//            return $this->db->update('zona', $data);
-//        }else{
-//            return 'already exists';
-//        }
-//    }
-    
     public function eliminar($id){
         $this->db->where('id_supervisor', $id);
         $query = $this->db->delete('supervisor');
@@ -162,6 +130,18 @@ class Supervisor_model extends CI_Model {
             'id_sit_revista' => $d['situacion'],
             'email' => $d['email']
         );
+//        if ($d['seccion'] !== ''){
+//            $data['id_zona'] = $d['seccion'];
+//        }
+//        if ($d['nivel'] !== ''){
+//            $data['id_nivel'] = $d['nivel'];
+//        }
+//        if ($d['modalidad'] !== ''){
+//            $data['id_modalidad'] = $d['modalidad'];
+//        }
+//        if ($d['situacion'] !== ''){
+//            $data['id_sit_revista'] = $d['situacion'];
+//        }
         $this->db->where('id_supervisor', $d['edit_sup_id']);
         return $this->db->update('supervisor', $data);
     }

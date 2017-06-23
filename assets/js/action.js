@@ -126,6 +126,48 @@ $(document).ready(function(){
             $('#nuevo_sup_submit2').click();
         }
     });
+    $('#cancelar').click(function(){
+        $(this).parent().parent().slideUp();
+    });
+    $('#cancelar2').click(function(){
+        $(this).parent().parent().slideUp();
+    });
+    $('#cancelar3').click(function(){
+        $(this).parent().parent().slideUp();
+    });
+    
+//    funciones de EXPEDIENTE ////////////////////////////////////////////////////////////////
+    $('#nuevo_exp').click(function(){
+        set_nro_transaccion(); //setea el nro de transaccion (AUTO_INCREMENT de la tabla expediente) y abre el popup
+    });
+    $('.datepicker').datepicker();
+    $('#iniciador').change(function(){
+        var elm = $(this);
+        if (elm.val() === 'new'){
+            $('#nuevo_iniciador').show();
+        }else{
+            $('#nuevo_iniciador').hide();
+        }
+    });
+    $('#supervisor').change(function(){
+        var elm = $(this);
+        if (elm.val() === 'new'){
+            $('#new_sup_pop').show();
+        }else{
+            $('#new_sup_pop').hide();
+        }
+    });
+    $('#dependencia').change(function(){
+        var elm = $(this);
+        if (elm.val() === 'new'){
+            $('#nueva_dependencia').show();
+        }else{
+            $('#nueva_dependencia').hide();
+        }
+    });
+    $('#guardar_expediente').click(function(){
+        $('#nuevo_exp_submit').click();
+    });
     
 });
 
@@ -269,4 +311,18 @@ function poblar_edit_popup(s){
     $('#domic_sup_edit').val(s.domicilio);
     $('#localidad_sup_edit').val(s.localidad);
     $('#cp_sup_edit').val(s.cod_postal);
+}
+
+function set_nro_transaccion(){
+    $.ajax({
+        url: '/expediente/get_nro_transaccion',
+        method: 'GET',
+        success: function(result){
+            $('#nro_transac').val(result);
+            $('#new_exp_pop').slideToggle();
+        },
+        error: function(data){
+            alert('ocurrió un error ('+data+'). Intente de nuevo o contacte al administrador del sistema.');
+        }
+    });
 }

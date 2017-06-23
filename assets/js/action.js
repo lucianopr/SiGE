@@ -138,9 +138,36 @@ $(document).ready(function(){
     
 //    funciones de EXPEDIENTE ////////////////////////////////////////////////////////////////
     $('#nuevo_exp').click(function(){
-        set_nro_transaccion(); //setea el nro de transaccion (AUTO AI desde la BD) y abre el popup
+        set_nro_transaccion(); //setea el nro de transaccion (AUTO_INCREMENT de la tabla expediente) y abre el popup
     });
     $('.datepicker').datepicker();
+    $('#iniciador').change(function(){
+        var elm = $(this);
+        if (elm.val() === 'new'){
+            $('#nuevo_iniciador').show();
+        }else{
+            $('#nuevo_iniciador').hide();
+        }
+    });
+    $('#supervisor').change(function(){
+        var elm = $(this);
+        if (elm.val() === 'new'){
+            $('#new_sup_pop').show();
+        }else{
+            $('#new_sup_pop').hide();
+        }
+    });
+    $('#dependencia').change(function(){
+        var elm = $(this);
+        if (elm.val() === 'new'){
+            $('#nueva_dependencia').show();
+        }else{
+            $('#nueva_dependencia').hide();
+        }
+    });
+    $('#guardar_expediente').click(function(){
+        $('#nuevo_exp_submit').click();
+    });
     
 });
 

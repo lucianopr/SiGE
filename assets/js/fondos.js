@@ -21,6 +21,10 @@ $(document).ready(function(){
         $('#fondo_gris').fadeIn('slow');     
         return false;
     });
+    $('#nuevo_exp').click(function(){        
+        $('#fondo_gris').fadeIn('slow');     
+        return false;
+    });
     $('.eliminar-action').click(function(){        
         $('#fondo_gris').fadeIn('slow');     
         return false;
@@ -54,6 +58,11 @@ $(document).ready(function(){
         return false;
     });
       $('#cancelar_supervisor').click(function(){
+        $(this).parent().parent('.edit-popup').fadeOut('slow');
+        $('#fondo_gris').fadeOut('slow');        
+        return false;
+    });
+      $('#cancelar_expediente').click(function(){
         $(this).parent().parent('.edit-popup').fadeOut('slow');
         $('#fondo_gris').fadeOut('slow');        
         return false;

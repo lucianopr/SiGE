@@ -19,13 +19,7 @@ class Expediente_model extends CI_Model {
             'id_modalidad' => $d['modalidad'],
             'id_dependencia' => $d['dependencia']
         );
-        $this->db->where('dni', $d['documento']);
-        $query = $this->db->get('supervisor');
-        if ($query->num_rows() == 0){
-            return $this->db->insert('supervisor', $data);
-        }else{
-            return 'already exists';
-        }
+        return $this->db->insert('expediente', $data);
     }
     
     public function get_nro_transac(){

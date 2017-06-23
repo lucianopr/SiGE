@@ -176,11 +176,11 @@ if(!$this->session->userdata("id_user")){
         <input id="eliminar_nombre" type="hidden" />
         <input id="id_eliminar" type="hidden" />
         <input id="eliminar_supervisor" type="button" value="Eliminar" />
-<<<<<<< HEAD
+
         <input id="cancelar_supervisor" type="button" value="Cancelar" />
-=======
+
         <input id="cancelar3" type="button" value="Cancelar" />
->>>>>>> 93675ac25391937cf16d80984c05be4f4ae40250
+
     </div>
 </div>
 <div id="fondo_gris" class="gray-backgroud"></div>

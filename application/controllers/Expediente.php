@@ -5,12 +5,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Expediente extends CI_Controller {
     
 	public function index(){
-<<<<<<< HEAD
+
             $this->load->library('session'); 
-            $this->load->helper('url');            
-            $this->load->view('header');            
-            $this->load->view('expediente');
-=======
+            $this->load->helper('url');
+
             $this->load->helper('url');
             $this->load->model('expediente_model');
             $this->load->model('supervisor_model');
@@ -34,12 +32,10 @@ class Expediente extends CI_Controller {
             
             $this->load->view('header');
             $this->load->view('expediente', $data);
->>>>>>> 93675ac25391937cf16d80984c05be4f4ae40250
             $this->load->view('footer');
             
 	}
-        
-<<<<<<< HEAD
+
 //        public function logoutaction()
 //    { 
 //        $this->session->sess_destroy(); 
@@ -48,8 +44,7 @@ class Expediente extends CI_Controller {
 //        redirect('welcome');
 //        
 //        //echo "logout";         
-//    }
-=======
+
         public function get_nro_transaccion(){
             $this->load->model('expediente_model');
             $nro = $this->expediente_model->get_nro_transac();
@@ -72,12 +67,12 @@ class Expediente extends CI_Controller {
             
             $t = $this->expediente_model->get_dependencia($data['dependencia']);
             if (sizeof($t) === 0){ //si no existe; agregar nuevo nivel
-                $data['dependencia'] = $this->expediente_model->nueva_dependencia($data['situacion']);
+                $data['dependencia'] = $this->expediente_model->nueva_dependencia($data['dependencia']);
             }
             
             $res = $this->expediente_model->nuevo($data);
             redirect(base_url().'expediente?nuevo_exp='.$res);
         }
         
->>>>>>> 93675ac25391937cf16d80984c05be4f4ae40250
+
 }

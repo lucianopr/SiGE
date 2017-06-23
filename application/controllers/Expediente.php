@@ -53,7 +53,7 @@ class Expediente extends CI_Controller {
             
             $t = $this->expediente_model->get_dependencia($data['dependencia']);
             if (sizeof($t) === 0){ //si no existe; agregar nuevo nivel
-                $data['dependencia'] = $this->expediente_model->nueva_dependencia($data['situacion']);
+                $data['dependencia'] = $this->expediente_model->nueva_dependencia($data['dependencia']);
             }
             
             $res = $this->expediente_model->nuevo($data);

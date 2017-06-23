@@ -61,8 +61,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <td><?php echo $e->fecha_ingreso; ?></td>
                     <td><?php echo $e->id_expediente; ?></td>
                     <td><?php echo $e->num_expediente; ?></td>
-                    <td><?php $id_mod = $expediente->id_modalidad; echo $modalidad[$id_mod];?></td>
-                    <td><?php $id_sec = $expediente->seccion_circuito_zona; echo $seccion[$id_sec];?></td>
+                    <td><?php $id_mod = $e->id_modalidad; echo $modalidad[$id_mod];?></td>
+                    <td><?php $id_sec = $e->seccion_circuito_zona; echo $seccion[$id_sec];?></td>
                     <td><a href="#"><i class="fa fa-pencil" aria-hidden="true"></i> Ver/Editar</a></td>
                     <td><a href="#"><i class="fa fa-remove" aria-hidden="true"></i> Eliminar</a></td>
                 </tr>

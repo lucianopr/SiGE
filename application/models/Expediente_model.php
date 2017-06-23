@@ -12,20 +12,16 @@ class Expediente_model extends CI_Model {
         $data = Array(
             'num_expediente' => $d['nro_expediente'],
             'fecha_ingreso' => $d['fecha_ingreso'],
-            'iniciador' => $d['iniciador'],
             'referencia' => $d['referencia'],
             'num_escuela' => $d['nro_escuela'],
             'seccion_circuito_zona' => $d['seccion'],
             'id_modalidad' => $d['modalidad'],
-            'id_dependencia' => $d['dependencia']
+            'id_dependencia' => $d['dependencia'],
+            'id_supervisor' => $d['supervisor'],
+            'iniciador' => $d['iniciador']
         );
-        $this->db->where('dni', $d['documento']);
-        $query = $this->db->get('supervisor');
-        if ($query->num_rows() == 0){
-            return $this->db->insert('supervisor', $data);
-        }else{
-            return 'already exists';
-        }
+        return $this->db->insert('expediente', $data);
+        
     }
     
     public function get_nro_transac(){

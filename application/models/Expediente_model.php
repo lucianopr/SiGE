@@ -20,7 +20,13 @@ class Expediente_model extends CI_Model {
             'id_supervisor' => $d['supervisor'],
             'iniciador' => $d['iniciador']
         );
-        return $this->db->insert('expediente', $data);
+        $op = $this->db->insert('expediente', $data);
+        $id = $this->db->insert_id();
+        $res = Array(
+            'res' => $op,
+            'id' => $id
+        );
+        return $res;
         
     }
     
@@ -41,6 +47,16 @@ class Expediente_model extends CI_Model {
         $this->db->insert('dependencia', $data);
         $insert_id = $this->db->insert_id();
         return $insert_id;
+    }
+    public function nuevo_pase($p){
+        $data = Array(
+            'fecha' => $p['fecha'],
+            'folio' => $p['folio'],
+            'dependencia' => $p['asignacion'],
+            'id_supervisor' => $p['supervisor'],
+            'id_expediente' => $p['exp_id']
+        );
+        return $this->db->insert('pases', $data);
     }
 
 }

@@ -169,6 +169,7 @@ $(document).ready(function(){
         $('#nuevo_exp_submit').click();
     });
     
+    
 });
 
 function searchbox_toggle(){

@@ -45,6 +45,12 @@ class Expediente extends CI_Controller {
             $this->load->model('supervisor_model');
             $data = $_GET;
             
+//            content of $_GET
+//            array(14) { ["fecha_ingreso"]=> string(10) "07/18/2017" ["nro_expediente"]=> string(1) "1" ["nro_escuela"]=> string(1) "1" 
+//            ["iniciador"]=> string(3) "new" ["nuevo_iniciador"]=> string(14) "otro iniciador" ["supervisor"]=> string(1) "7" 
+//            ["seccion"]=> string(1) "1" ["nueva_seccion"]=> string(0) "" ["dependencia"]=> string(3) "new" ["nueva_dependencia"]=> string(17) "nueva dependencia" 
+//            ["modalidad"]=> string(1) "5" ["nueva_modalidad"]=> string(0) "" ["referencia"]=> string(22) "prueba referencia test" ["folio"]=> string(1) "1" } 
+            
 //            guardar nuevos elementos si corresponde (zona, nivel, modalidad, situacion rev)
             $t = $this->supervisor_model->get_seccion($data['seccion']);
             if (sizeof($t) === 0){ //si no existe; agregar nuevo nivel
@@ -57,7 +63,18 @@ class Expediente extends CI_Controller {
             }
             
             $res = $this->expediente_model->nuevo($data);
-            redirect(base_url().'expediente?nuevo_exp='.$res);
+            
+            $datos_pase = Array(
+                'exp_id' => $res['id'],
+                'fecha' => $data['fecha_ingreso'],
+                'folio' => $data['folio'],
+                'asignacion' => $data['dependencia'],
+                'supervisor' => $data['supervisor']
+            );
+            die(var_dump($res));
+            $res_pase = $this->expediente_model->nuevo_pase($datos_pase);
+            
+            redirect(base_url().'expediente?nuevo_exp='.$res['res'].'&pase='.$res_pase);
         }
         
 }

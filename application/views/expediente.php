@@ -12,17 +12,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
     <div class="search-fields">
         <h3>Buscar Expediente:</h3>
-        <form action="#">
-            <input name="nombre_supervisor" placeholder="Título" type="text"/>
-            <select>
-                <option>Sección</option>
-                <option>Sección A</option>
-                <option>Sección B</option>
-                <option>Sección C</option>
+        <form action="<?php echo base_url();?>expediente/buscar">
+            <select id="ex_buscar_supervisor" name="ex_buscar_supervisor">
+                <option value="none">Supervisor</option>
+                <?php foreach ($supervisores as $supervisor) { ?>
+                    <option value="<?php echo $supervisor->id_supervisor;?>"><?php echo $supervisor->nombre; ?></option>  
+                <?php } ?>
+            </select>
+            <select id="ex_buscar_seccion" name="ex_buscar_seccion">
+                <option value="none">Sección</option>
+                <?php foreach ($secciones as $seccion) { ?>
+                    <option value="<?php echo $seccion->id_zona;?>"><?php echo $seccion->nombre_zona; ?></option>  
+                <?php } ?>
             </select>
             <input type="text" placeholder="Nro de Expediente" name="num_expediente" />
             <input type="text" placeholder="Nro Interno" name="num_interno" />
-            <input type="text" placeholder="Escuela Nro"/>
+            <input type="text" placeholder="Escuela Nro" name="num_escuela"/>
             <input type="submit" value="Buscar" name="buscar" />            
         </form>        
     </div>
@@ -186,7 +191,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <h3>Nuevo Supervisor:</h3>
     </div>
     <div>
-        <form action="<?php echo base_url();?>supervisor/nuevo">
+        <form action="<?php echo base_url();?>supervisor/nuevo_exp">
             <!--nivel-->
             <div>
                 Nivel:
@@ -202,26 +207,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <!--modalidad-->
             <div>
                 Modalidad:
-                <select id="new_mod_sel" name="modalidad">
+                <select id="new_mod_sel_sup" name="modalidad">
                     <option value=""></option>
-                    <option id="nueva_mod_opt" value="new">Nueva</option>
+                    <option id="nueva_mod_opt_sup" value="new">Nueva</option>
                 <?php foreach ($modalidades as $modalidad) { ?>
                     <option value="<?php echo $modalidad->id;?>"><?php echo $modalidad->nombre; ?></option>  
                 <?php } ?>
                 </select>
-                <input style="display: none;" type="text" id="nueva_modalidad" name="nueva_modalidad" placeholder="Ingrese la nueva modalidad" />
+                <input style="display: none;" type="text" id="nueva_modalidad_sup" name="nueva_modalidad_sup" placeholder="Ingrese la nueva modalidad" />
             </div>
             <!--zona/secc/niv-->
             <div>
                 Sección:
-                <select id="new_sec_sel" name="seccion">
+                <select id="new_sec_sel_sup" name="seccion">
                     <option value=""></option>
-                    <option id="nueva_sec_opt" value="new">Nueva</option>
+                    <option id="nueva_sec_opt_sup" value="new">Nueva</option>
                 <?php foreach ($secciones as $seccion) { ?>
                     <option value="<?php echo $seccion->id_zona;?>"><?php echo $seccion->nombre_zona; ?></option>  
                 <?php } ?>
                 </select>
-                <input style="display: none;" type="text" id="nueva_seccion" name="nueva_seccion" placeholder="Ingrese la nueva sección" />
+                <input style="display: none;" type="text" id="nueva_seccion_sup" name="nueva_seccion_sup" placeholder="Ingrese la nueva sección" />
             </div>
             <!--situacion revista-->
             <div>

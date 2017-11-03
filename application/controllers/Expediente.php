@@ -77,4 +77,12 @@ class Expediente extends CI_Controller {
             redirect(base_url().'expediente?nuevo_exp='.$res['res'].'&pase='.$res_pase);
         }
         
+        public function buscar(){
+            $this->load->helper('url');
+            $this->load->model('expediente_model');
+            $data = $_GET;
+            
+            $expedientes = $this->expediente_model->get_expediente($data);
+            die(var_dump($expedientes));
+        }
 }

@@ -59,7 +59,11 @@ $(document).ready(function(){
         var dni = $('#dni_nuevo_sup').val();
         if (dni === '' || nombre === ''){
             alert('Complete los campos "Nombre" y "Documento" por favor.');
-            $('#nombre_nuevo_sup').focus();
+            if(nombre === ''){
+                $('#nombre_nuevo_sup').focus();
+            }else{
+                $('#dni_nuevo_sup').focus();
+            }
         }else{
             $('#nuevo_sup_submit').click();
         }
@@ -80,12 +84,28 @@ $(document).ready(function(){
             $('#nueva_modalidad').hide();
         }
     });
+    $('#new_mod_sel_sup').change(function(){
+        var elm = $(this);
+        if (elm.val() === 'new'){
+            $('#nueva_modalidad_sup').show();
+        }else{
+            $('#nueva_modalidad_sup').hide();
+        }
+    });
     $('#new_sec_sel').change(function(){
         var elm = $(this);
         if (elm.val() === 'new'){
             $('#nueva_seccion').show();
         }else{
             $('#nueva_seccion').hide();
+        }
+    });
+    $('#new_sec_sel_sup').change(function(){
+        var elm = $(this);
+        if (elm.val() === 'new'){
+            $('#nueva_seccion_sup').show();
+        }else{
+            $('#nueva_seccion_sup').hide();
         }
     });
     $('#new_sit_sel').change(function(){
@@ -167,6 +187,13 @@ $(document).ready(function(){
     });
     $('#guardar_expediente').click(function(){
         $('#nuevo_exp_submit').click();
+    });
+    $('#modalidad').change(function(){
+        if ($(this).val() === 'new'){
+            $('#nueva_modalidad').show();
+        }else{
+            $('#nueva_modalidad').hide();
+        }
     });
     
     

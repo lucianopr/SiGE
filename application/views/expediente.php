@@ -77,6 +77,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
 </div>
 
+<div id="fondo_gris" class="gray-backgroud"></div>
+
 <!--pop up de Nuevo Expediente-->
 <div id="new_exp_pop" class="edit-popup">
     <div class="popup-head">

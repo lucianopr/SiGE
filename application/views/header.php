@@ -8,10 +8,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <title>SiGE - Gestión de Expedientes</title>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/bootstrap.min.css" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/style.css" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/fondo.css" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/font-awesome/css/font-awesome.min.css" />
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.min.js" ></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/bootstrap.min.js" ></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/action.js" ></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/fondos.js" ></script>
     </head>
     <body>
         <header>
@@ -27,6 +29,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <li><a href="<?php echo base_url(); ?>expediente">Expedientes</a></li>
                     <li><a href="<?php echo base_url(); ?>supervisor">Supervisores</a></li>
                     <li><a href="<?php echo base_url(); ?>seccion">Sección-circuito-zona</a></li>
+                    <li class="right" style="position:absolute;right:20%;"><a href="<?php echo base_url(); ?>welcome/logoutaction">Salir</a></li>
+                    <li class="right" style="position:absolute;right:10%;"><a href="<?php echo base_url(); ?>welcome/backup">Realizar Backup</a></li>
                   </ul>
                 </div><!-- /.navbar-collapse -->
               </div><!-- /.container-fluid -->

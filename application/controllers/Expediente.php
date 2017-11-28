@@ -9,7 +9,14 @@ class Expediente extends CI_Controller {
             $this->load->model('expediente_model');
             $this->load->model('supervisor_model');
             $this->load->model('seccion_model');
-            $all_expedientes = $this->expediente_model->get_all();
+            
+            $get = $_GET;
+            if(isset($get['buscar']) && !empty($get['buscar'])){
+                $all_expedientes = $this->expediente_model->get_expediente($get);
+            } else {
+                $all_expedientes = $this->expediente_model->get_all();
+            }
+            
             $all_supervisores = $this->supervisor_model->get_all();
             $all_secciones = $this->seccion_model->get_all_seccion();
             $all_modalidades = $this->supervisor_model->get_modalidades();
@@ -77,12 +84,4 @@ class Expediente extends CI_Controller {
             redirect(base_url().'expediente?nuevo_exp='.$res['res'].'&pase='.$res_pase);
         }
         
-        public function buscar(){
-            $this->load->helper('url');
-            $this->load->model('expediente_model');
-            $data = $_GET;
-            
-            $expedientes = $this->expediente_model->get_expediente($data);
-            die(var_dump($expedientes));
-        }
 }

@@ -12,7 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
     <div class="search-fields">
         <h3>Buscar Expediente:</h3>
-        <form action="<?php echo base_url();?>expediente?buscar=si&">
+        <form action="<?php echo base_url();?>expediente">
             <select id="ex_buscar_supervisor" name="ex_buscar_supervisor">
                 <option value="none">Supervisor</option>
                 <?php foreach ($supervisores as $supervisor) { ?>

@@ -10,6 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <a href="#" class="search-link"><i class="fa fa-search" aria-hidden="true"></i> Buscar</a>
         <a id="nuevo_exp" href="#"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo</a>
     </div>
+    
     <div class="search-fields">
         <h3>Buscar Expediente:</h3>
         <form action="<?php echo base_url();?>expediente">
@@ -42,7 +43,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <td>Modalidad</td>
                     <td>Sección</td>
                     <td><i class="fa fa-pencil" aria-hidden="true"></i> Ver/Editar</td>
-                    <td><i class="fa fa-remove" aria-hidden="true"></i> Eliminar</td>
+                    <!--<td><i class="fa fa-remove" aria-hidden="true"></i> Eliminar</td>-->
                 </tr>
             </thead>
             <tbody>
@@ -68,8 +69,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <td><?php echo $e->num_expediente; ?></td>
                     <td><?php $id_mod = $e->id_modalidad; echo $modalidad[$id_mod];?></td>
                     <td><?php $id_sec = $e->seccion_circuito_zona; echo $seccion[$id_sec];?></td>
-                    <td><a href="#"><i class="fa fa-pencil" aria-hidden="true"></i> Ver/Editar</a></td>
-                    <td><a href="#"><i class="fa fa-remove" aria-hidden="true"></i> Eliminar</a></td>
+                    <td><a href="#" class="call_edit_exp"><i class="fa fa-pencil" aria-hidden="true"></i> Ver/Editar</a></td>
+                    <!--<td><a href="#"><i class="fa fa-remove" aria-hidden="true"></i> Eliminar</a></td>-->
                 </tr>
                 <?php } ?>
             </tbody>            
@@ -81,7 +82,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <!--pop up de Nuevo Expediente-->
 <div id="new_exp_pop" class="edit-popup">
-    <div class="popup-head">
+    <div class="popup-head"> 
+        <div class="close"><a href="#" id="cerrar_popup_eliminar"><i class="fa fa-window-close" aria-hidden="true"></i></a></div>      
+        
         <h3>Nuevo Expediente:</h3>
     </div>
     <div>
@@ -138,7 +141,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <option value=""></option>
                     <option id="new_dependencia" value="new">Nueva</option>
                 <?php foreach ($dependencias as $dependencia) { ?>
-                    <option value="<?php echo $dependencia->id;?>"><?php echo $dependencia->nombre; ?></option>  
+                    <option value="<?php echo $dependencia->id_dependencia;?>"><?php echo $dependencia->nombre_dependencia; ?></option>  
                 <?php } ?>
                 </select>
                 <input style="display: none;" type="text" id="nueva_dependencia" name="nueva_dependencia" placeholder="Ingrese la nueva dependencia" />
@@ -183,7 +186,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>-->
     <div>
         <input id="guardar_expediente" type="button" value="Guardar" />
-        <input class="cancelar" type="button" value="Cancelar" />
+        <input class="cancelar" id="cancelar4" type="button" value="Cancelar" />
     </div>
 </div>
 
@@ -265,3 +268,175 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <input id="cancelar" type="button" value="Cerrar" />
     </div>
 </div>
+
+<!--pop up de Expediente-->
+<div id="fondo_gris" class="gray-backgroud"></div>
+<div id="edit_exp_pop" class="edit-popup">
+    <div class="popup-head">
+         <div class="close"><a href="#" id="cerrar_popup_pase"><i class="fa fa-window-close" aria-hidden="true"></i></a></div>
+        <h3>Expediente:</h3>
+    </div>
+    <div>
+        <form action="<?php echo base_url();?>expediente/guardar">
+            <!--fecha de ingreso-->
+            <input type="text" class="datepicker" id="fecha_expte_edit" placeholder="Seleccione una fecha" name="fecha_ingreso" disabled="disabled" />
+            <input type="text" id="nro_transac_edit" disabled="disabled" name="nro_transac" title="éste nro se generará automaticamente al guardar el nuevo expediente." />
+            <input type="text" id="nro_expediente_edit" disabled="disabled" placeholder="Nro de Expediente" name="nro_expediente" />
+            <input type="text" id="nro_escuela_edit" disabled="disabled" placeholder="Nro de Escuela" name="nro_escuela" />
+            
+            <!--iniciador-->
+            <div>
+                Iniciador:
+                <input type="text" id="iniciador_edit" disabled="disabled" placeholder="Iniciador" name="iniciador" />
+<!--                <select id="iniciador_edit" name="iniciador">
+                    <option value=""></option>
+                    <option id="new_iniciador" value="new">Otro</option>
+                <?php foreach ($supervisores as $iniciador) { ?>
+                    <option value="<?php echo $iniciador->nombre;?>"><?php echo $iniciador->nombre; ?></option>  
+                <?php } ?>
+                </select>
+                <input style="display: none;" type="text" id="nuevo_iniciador" name="nuevo_iniciador" placeholder="Ingrese el nombre del iniciador" />-->
+            </div>
+            
+            <!--supervisor-->
+            <div>
+                Supervisor:
+                <select id="supervisor_edit" disabled="disabled" name="supervisor">
+                    <option value=""></option>
+                    <option id="new_supervisor" value="new">Nuevo</option>
+                <?php foreach ($supervisores as $supervisor) { ?>
+                    <option value="<?php echo $supervisor->id_supervisor;?>"><?php echo $supervisor->nombre; ?></option>  
+                <?php } ?>
+                </select>
+                <!--Show popup to create a new supervisor if new is selected above-->
+            </div>
+            
+            <!--zona/secc/niv-->
+            <div>
+                Sección:
+                <select id="new_sec_sel_edit" disabled="disabled" name="seccion">
+                    <option value=""></option>
+                    <option id="nueva_sec_opt" value="new">Nueva</option>
+                <?php foreach ($secciones as $seccion) { ?>
+                    <option value="<?php echo $seccion->id_zona;?>"><?php echo $seccion->nombre_zona; ?></option>  
+                <?php } ?>
+                </select>
+                <input style="display: none;" type="text" id="nueva_seccion" name="nueva_seccion" placeholder="Ingrese la nueva sección" />
+            </div>
+            
+            <!--dependencia-->
+            <div>
+                Dependencia:
+                <select id="dependencia_edit" disabled="disabled" name="dependencia">
+                    <option value=""></option>
+                    <option id="new_dependencia" value="new">Nueva</option>
+                <?php foreach ($dependencias as $dependencia) { ?>
+                    <option value="<?php echo $dependencia->id_dependencia;?>"><?php echo $dependencia->nombre_dependencia; ?></option>  
+                <?php } ?>
+                </select>
+                <input style="display: none;" type="text" id="nueva_dependencia" name="nueva_dependencia" placeholder="Ingrese la nueva dependencia" />
+            </div>
+            
+            <!--modalidad-->
+            <div>
+                Modalidad:
+                <select id="modalidad_edit" disabled="disabled" name="modalidad">
+                    <option value=""></option>
+                    <option id="new_modalidad" value="new">Nueva</option>
+                <?php foreach ($modalidades as $modalidad) { ?>
+                    <option value="<?php echo $modalidad->id;?>"><?php echo $modalidad->nombre; ?></option>  
+                <?php } ?>
+                </select>
+                <input style="display: none;" type="text" id="nueva_modalidad" name="nueva_modalidad" placeholder="Ingrese la nueva modalidad" />
+            </div>
+            
+            <input type="text" id="referencia_edit" disabled="disabled" placeholder="Ingrese una referencia" name="referencia" />
+            
+            <!--<input type="text" id="folio_edit" disabled="disabled" placeholder="Folios" name="folio" />-->
+            
+            <!--submit is hidden, gets fired up with "guardar button" bellow-->
+            <input id="nuevo_exp_submit" type="submit" style="display: none;" />
+        </form>
+    </div>
+    <!--Tabla de pases es innecesaria en el pop up para NUEVO expediente (no existen pases aún)-->
+    <h3>Pases:<span style="float: right; font-size: 14px; margin-right: 20px;"><a id="nuevo_pase" href="#" style="vertical-align: sub;"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo pase</a></span></h3>
+    <div class="item-list" style="margin: 20px auto; border: 1px solid #ccc;">
+        <table id="tabla_pases_edit">
+            <thead>
+                <tr>
+                    <td>Fecha</td>
+                    <td>Folios</td>
+                    <td>Asignación</td>
+                    <td>Supervisor</td>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <!--<input id="guardar_expediente" type="button" value="Guardar" />-->
+        <input class="cancelar" id="cancelar5" type="button" value="Cancelar"  />
+    </div>
+</div>
+
+ 
+        
+<div id="fondo_gris9" style="background-color: rgba(0, 0, 0, 0.4); height: 300%; position: absolute; width: 100%; display: none; top: 0; left: 0" class="gray-backgroud"></div>
+<div id="nuevo_pase_pop" class="edit-popup">
+    <div class="popup-head">
+        <div class="close"><a href="#" id="cerrar_popup_eliminar_pase"><i class="fa fa-window-close" aria-hidden="true"></i></a></div>      
+    
+
+        <h3>Nuevo Pase:</h3>
+    </div>
+    <div>
+        <form action="<?php echo base_url();?>expediente/new_pase">
+            <input type="text" style="display:none" id="id_exp_pase" name="id_exp" />
+            <input type="text" class="datepicker" id="fecha_nuevo_pase" placeholder="Seleccione una fecha" name="fecha_pase" />
+            <input type="text" id="folio_pase" placeholder="Folios" name="folio" />
+            <div>
+                Asignación:
+                <select id="dependencia_pase" name="dependencia">
+                    <option value=""></option>
+                    <option id="new_dependencia" value="new">Nueva</option>
+                <?php foreach ($dependencias as $asig) { ?>
+                    <option value="<?php echo $asig->id_dependencia;?>"><?php echo $asig->nombre_dependencia; ?></option>  
+                <?php } ?>
+                </select>
+                <input style="display: none;" type="text" id="nueva_asignacion_pase" name="nueva_asignacion" placeholder="Ingrese la dependencia" />
+            </div>
+            <div>
+                Supervisor:
+                <select id="supervisor_pase" name="supervisor">
+                    <option value=""></option>
+                <?php foreach ($supervisores as $sup) { ?>
+                    <option value="<?php echo $sup->id_supervisor;?>"><?php echo $sup->nombre; ?></option>  
+                <?php } ?>
+                </select>
+                <!--Show popup to create a new supervisor if new is selected above-->
+            </div>
+            <input id="nuevo_pase_submit" type="submit" style="display: none;" />
+        </form>
+    </div>
+    <div>
+        <input id="guardar_pase" type="button" value="Guardar" />
+        <input class="cancelar" id="cancelar69" type="button" value="Cancelar"  />
+    </div>
+</div>
+
+<!--campos con los nombres necesarios para mostrar los datos-->
+<div style="display: none">
+    
+     <?php
+ foreach ($supervisores as $s) {?>
+    <input id="sup_<?php echo $s->id_supervisor; ?>" value="<?php echo $s->nombre;?>" />
+ <?php }    ?>
+    
+    <?php
+ foreach ($dependencias as $d) {?>
+    <input id="dep_<?php echo $d->id_dependencia; ?>" value="<?php echo $d->nombre_dependencia;?>" />
+ <?php }    ?>
+</div>
+
+<h2 id="pase_exito" style="display: <?php echo $pase;?>; background-color: lightgreen; top:0; width: 100%; position:absolute">Nuevo pase generado con éxito</h2>

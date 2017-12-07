@@ -4,7 +4,7 @@
 <div class="page-content">
     <div class="options-bar">
         <!--<a href="#" class="search-link"><i class="fa fa-search" aria-hidden="true"></i> Buscar</a>-->
-        <a class="new-link" href="#"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo</a>
+        <a id="nueva_seccion" class="new-link" href="#"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo</a>
     </div>
     <h3>Lista de Sec/niv/zona:</h3>
     <div class="item-list">
@@ -29,10 +29,13 @@
         </table>
     </div>
 </div>
-
+<div id="fondo_gris" class="gray-backgroud"></div>
 <!--nueva zona PopUp-->
 <div id="nueva_zona_popup" class="edit-popup">
     <div class="popup-head">
+           
+        <div class="close"><a href="#" id="cerrar_popup_eliminar_edit"><i class="fa fa-window-close" aria-hidden="true"></i></a></div>
+      
         <h3>Nueva Sección/Circuito/Zona:</h3>
     </div>
     <div>
@@ -41,9 +44,12 @@
     </div>
 </div>
 
+
 <!--editar zona PopUp-->
 <div id="editar_zona_popup" class="edit-popup">
     <div class="popup-head">
+        <div class="close"><a href="#" id="cerrar_popup_eliminar"><i class="fa fa-window-close" aria-hidden="true"></i></a></div>
+       
         <h3>Editar Sección/Circuito/Zona:</h3>
     </div>
     <div>

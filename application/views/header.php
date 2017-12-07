@@ -29,8 +29,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <li><a href="<?php echo base_url(); ?>expediente">Expedientes</a></li>
                     <li><a href="<?php echo base_url(); ?>supervisor">Supervisores</a></li>
                     <li><a href="<?php echo base_url(); ?>seccion">Sección-circuito-zona</a></li>
-                    <li class="right" style="position:absolute;right:20%;"><a href="<?php echo base_url(); ?>welcome/logoutaction">Salir</a></li>
-                    <li class="right" style="position:absolute;right:10%;"><a href="<?php echo base_url(); ?>welcome/backup">Realizar Backup</a></li>
+                    <li class="right" style="position:absolute;right:170px;"><a href="<?php echo base_url(); ?>welcome/logoutaction">Salir</a></li>
+                    <li class="right" style="position:absolute;right:40px;"><a href="<?php echo base_url(); ?>welcome/backup">Realizar Backup</a></li>
                   </ul>
                 </div><!-- /.navbar-collapse -->
               </div><!-- /.container-fluid -->

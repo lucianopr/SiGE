@@ -1,5 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+if(!$this->session->userdata("id_user")){
+    redirect('welcome');   
+}
 ?>
 
 <div class="page-header">
@@ -7,10 +10,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 <div class="page-content">
     <div class="options-bar">
-        <a href="#" class="search-link"><i class="fa fa-search" aria-hidden="true"></i> Buscar</a>
+        <!--<a href="#" class="search-link"><i class="fa fa-search" aria-hidden="true"></i> Buscar</a>-->
         <a href="#" id="new_supervisor"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo</a>
     </div>
-    <div class="search-fields">
+<!--    <div class="search-fields">
         <h3>Buscar Supervisores:</h3>
         <form action="#">
             <input name="nombre_supervisor" placeholder="Nombre" type="text"/>
@@ -32,7 +35,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <input type="checkbox" name="check_zona" value="z4" />
             </div>
             <input type="submit" value="Buscar" name="buscar" />            
-        </form>        
+        </form>        -->
     </div>
     <h3>Lista de Supervisores:</h3>
     <div class="item-list">
@@ -82,9 +85,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
 </div>
 
+<div id="fondo_gris" class="gray-backgroud"></div>
 <!--pop up de Nuevo Supervisor-->
 <div id="new_sup_pop" class="edit-popup">
     <div class="popup-head">
+        <div class="close"><a href="#" id="cerrar_popup_eliminar"><i class="fa fa-window-close" aria-hidden="true"></i></a></div>
         <h3>Nuevo Supervisor:</h3>
     </div>
     <div>
@@ -164,6 +169,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <!--eliminar supervisor popup-->
 <div id="eliminar_popup" class="edit-popup">
     <div class="popup-head">
+         <div class="close"><a href="#" id="cerrar_popup_eliminar"><i class="fa fa-window-close" aria-hidden="true"></i></a></div>
         <h3>Eliminar Supervisor:</h3>
     </div>
     <div>
@@ -171,13 +177,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <input id="eliminar_nombre" type="hidden" />
         <input id="id_eliminar" type="hidden" />
         <input id="eliminar_supervisor" type="button" value="Eliminar" />
-        <input id="cancelar3" type="button" value="Cancelar" />
+
+        <input id="cancelar_supervisor" type="button" value="Cancelar" />
+
+        <!--<input id="cancelar3" type="button" value="Cancelar" />-->
+
     </div>
 </div>
 
 <!--pop up de Editar/ver Supervisor-->
 <div id="edit_sup_pop" class="edit-popup">
     <div class="popup-head">
+        <div class="close"><a href="#" id="cerrar_popup_eliminar"><i class="fa fa-window-close" aria-hidden="true"></i></a></div>
         <h3>Supervisor:</h3>
     </div>
     <div>
@@ -253,4 +264,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <input id="guardar_supervisor2" type="button" value="Guardar" />
         <input id="cancelar2" type="button" value="Cerrar" />
     </div>
+
 </div>

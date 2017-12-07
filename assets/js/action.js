@@ -5,6 +5,8 @@
  */
 $(document).ready(function(){
     
+    $('#pase_exito').fadeOut(5000);
+    
     $('.search-link').click(function(){ 
         searchbox_toggle();
     });
@@ -149,11 +151,20 @@ $(document).ready(function(){
     $('#cancelar').click(function(){
         $(this).parent().parent().slideUp();
     });
+    
     $('#cancelar2').click(function(){
         $(this).parent().parent().slideUp();
     });
     $('#cancelar3').click(function(){
         $(this).parent().parent().slideUp();
+    });
+     $('#cancelar4').click(function(){
+        $(this).parent().parent().slideUp();
+    });
+     $('#cancelar69').click(function(){
+        $('#nuevo_pase_pop').slideUp();
+        $('#fondo_gris9').slideUp();
+        
     });
     
 //    funciones de EXPEDIENTE ////////////////////////////////////////////////////////////////
@@ -186,7 +197,23 @@ $(document).ready(function(){
         }
     });
     $('#guardar_expediente').click(function(){
-        $('#nuevo_exp_submit').click();
+        if ($('#fecha_expte').val() !== ''){
+            if ($('#supervisor').val() !== ''){
+                if ($('#new_sec_sel').val() !== ''){
+                    if ($('#modalidad').val() !== ''){
+                        $('#nuevo_exp_submit').click();
+                    }else{
+                        alert('Seleccione una modalidad');
+                    }
+                }else{
+                    alert('Seleccione una sección')
+                }
+            }else{
+                alert('Seleccione un supervisor');
+            }
+        }else{
+            alert('Seleccione una fecha');
+        }
     });
     $('#modalidad').change(function(){
         if ($(this).val() === 'new'){
@@ -196,6 +223,45 @@ $(document).ready(function(){
         }
     });
     
+    $('.call_edit_exp').click(function(){
+        var exp_id = $(this).parent().parent().attr('id');
+        show_edit_exp(exp_id);
+//        $('#edit_exp_pop').show();
+    });
+    
+    $('#nuevo_pase').click(function(){
+        $('#nuevo_pase_pop').fadeIn();
+        $('#id_exp_pase').val($('#nro_transac_edit').val());
+        $('#fondo_gris9').fadeIn();
+    });
+    
+    $('#dependencia_pase').change(function(){
+        if ($(this).val() === 'new'){
+            $('#nueva_asignacion_pase').show();
+        }else{
+            $('#nueva_asignacion_pase').hide();
+        }
+    });
+    
+    $('#guardar_pase').click(function(){
+        if($('#fecha_nuevo_pase').val() !== ''){
+            if($('#folio_pase').val() !== ''){
+                if ($('#dependencia_pase').val() !== ''){
+                    if ($('#supervisor_pase').val() !== ''){
+                        $('#nuevo_pase_submit').click();
+                    }else{
+                        aler('Seleccione un supervisor');
+                    }
+                }else{
+                    alert('Seleccione la nueva asignación');
+                }
+            }else{
+                alert('Complete el campo "Folio"');
+            }
+        }else{
+            alert('Ingrese una fecha');
+        }
+    });
     
 });
 
@@ -353,4 +419,51 @@ function set_nro_transaccion(){
             alert('ocurrió un error ('+data+'). Intente de nuevo o contacte al administrador del sistema.');
         }
     });
+}
+
+function show_edit_exp(id){
+    $.ajax({
+        url: '/expediente/get_expediente_id',
+        method: 'GET',
+        data: 'id='+id,
+        dataType: 'json',
+        success: function(result){
+            var exp = result.exp[0];//obtenemos el objeto Expediente
+            var pases = result.pases;//obtenemos un Array con uno o más objetos Pase
+            poblar_exp_edit(exp, pases);
+            $('#edit_exp_pop').show();
+            $('#fondo_gris').fadeIn('slow');             
+//            alert(exp.id_expediente);
+        },
+        error: function(data){
+            alert('ocurrió un error ('+data+'). Intente de nuevo o contacte al administrador del sistema.');
+        }
+    });
+}
+
+function poblar_exp_edit(e, p){
+    $('#fecha_expte_edit').val(e.fecha_ingreso);
+    $('#nro_transac_edit').val(e.id_expediente);
+    $('#nro_expediente_edit').val(e.num_expediente);
+    $('#nro_escuela_edit').val(e.num_escuela);
+    $('#iniciador_edit').val(e.iniciador);
+    $('#supervisor_edit').val(e.id_supervisor);
+    $('#new_sec_sel_edit').val(e.seccion_circuito_zona);
+    $('#dependencia_edit').val(e.id_dependencia);
+    $('#modalidad_edit').val(e.id_modalidad);
+    $('#referencia_edit').val(e.referencia);
+    
+    var ix = p.length;
+    for (i = 0; i < ix; i++){
+        var pase = p[i];
+//        alert(pase.dependencia);
+        var n_dep = $('#dep_'+pase.dependencia).val(); 
+//        alert(n_dep);
+        var n_sup = $('#sup_'+pase.id_supervisor).val();
+        
+        $('#tabla_pases_edit tr:last').after('<tr><td>'+pase.fecha+'</td><td>'+pase.folio+'</td><td>'+n_dep+'</td><td>'+n_sup+'</td></tr>');
+//        alert(pase.id_pases);
+    }
+//    $('#myTable tr:last').after('<tr>...</tr><tr>...</tr>');
+    
 }

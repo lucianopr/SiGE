@@ -40,6 +40,10 @@ class Expediente_model extends CI_Model {
         $query = $this->db->get('dependencia');
         return $query->result();
     }
+    public function get_dependencias(){
+        $query = $this->db->get('dependencia');
+        return $query->result();
+    }
     public function nueva_dependencia($n){
         $data = Array(
             'nombre_dependencia' => $n
@@ -91,5 +95,29 @@ class Expediente_model extends CI_Model {
         return $query->result();
         
     }
+    
+    public function get_expediente_id($id){
+        $this->db->where('id_expediente', $id);
+        $query = $this->db->get('expediente');
+        return $query->result();
+    }
+    
+    public function get_pases_id($id){
+        $this->db->where('id_expediente', $id);
+        $this->db->order_by('id_pases', 'asc');
+        $query = $this->db->get('pases');
+        return $query->result();
+    }
+     public function new_pase($p){
+        $data = Array(
+            'fecha' => $p['fecha'],
+            'folio' => $p['folio'],
+            'dependencia' => $p['asignacion'],
+            'id_supervisor' => $p['supervisor'],
+            'id_expediente' => $p['exp_id']
+        );
+        return $this->db->insert('pases', $data);
+    }
+                
 
 }

@@ -22,6 +22,13 @@ class Expediente extends CI_Controller {
             $all_modalidades = $this->supervisor_model->get_modalidades();
             $all_sitprevistas = $this->supervisor_model->get_sitprev();
             $all_niveles_sup = $this->supervisor_model->get_niveles();
+            $all_dependencias = $this->expediente_model->get_dependencias();
+            
+            if(isset($get['nuevo_pase']) && ($get['nuevo_pase'] === 'yes')){
+                $pase = 'block';
+            }else{
+                $pase = 'none';
+            }
             
             $data = Array(
                 'expedientes' => $all_expedientes,
@@ -29,7 +36,9 @@ class Expediente extends CI_Controller {
                 'secciones' => $all_secciones,
                 'modalidades' => $all_modalidades,
                 'sitprevistas' => $all_sitprevistas,
-                'niveles' => $all_niveles_sup
+                'niveles' => $all_niveles_sup,
+                'dependencias' => $all_dependencias,
+                'pase' => $pase
             );
             
             
@@ -64,9 +73,11 @@ class Expediente extends CI_Controller {
                 $data['seccion'] = $this->supervisor_model->nuevo_nivel($data['seccion']);
             }
             
-            $t = $this->expediente_model->get_dependencia($data['dependencia']);
-            if (sizeof($t) === 0){ //si no existe; agregar nuevo nivel
-                $data['dependencia'] = $this->expediente_model->nueva_dependencia($data['dependencia']);
+            if ($data['dependencia'] === "new"){
+//                $t = $this->expediente_model->get_dependencia($data['dependencia']);
+//                if (sizeof($t) === 0){ //si no existe; agregar nuevo nivel
+                $data['dependencia'] = $this->expediente_model->nueva_dependencia($data['nueva_dependencia']);
+//                }
             }
             
             $res = $this->expediente_model->nuevo($data);
@@ -78,10 +89,43 @@ class Expediente extends CI_Controller {
                 'asignacion' => $data['dependencia'],
                 'supervisor' => $data['supervisor']
             );
-            die(var_dump($res));
             $res_pase = $this->expediente_model->nuevo_pase($datos_pase);
             
             redirect(base_url().'expediente?nuevo_exp='.$res['res'].'&pase='.$res_pase);
+        }
+        
+        public function get_expediente_id(){
+            $this->load->helper('url');
+            $this->load->model('expediente_model');
+            $id = $_GET['id'];
+            $exp = $this->expediente_model->get_expediente_id($id);
+            $pases = $this->expediente_model->get_pases_id($id);
+            $response = Array(
+                'exp' => $exp,
+                'pases' => $pases
+            );
+            echo json_encode($response);
+            die();
+        }
+        
+        public function new_pase(){
+            $this->load->helper('url');
+            $this->load->model('expediente_model');
+            $data = $_GET;
+            
+            if ($data['dependencia'] === 'new'){
+                $data['dependencia'] = $this->expediente_model->nueva_dependencia($data['nueva_asignacion']);
+            }
+            
+            $datos_pase = Array(
+                'exp_id' => $data['id_exp'],//este no lo reconoce
+                'fecha' => $data['fecha_pase'],
+                'folio' => $data['folio'],
+                'asignacion' => $data['dependencia'],
+                'supervisor' => $data['supervisor']
+            );
+            $res_pase = $this->expediente_model->nuevo_pase($datos_pase);
+            redirect(base_url().'expediente?nuevo_pase=yes');
         }
         
 }

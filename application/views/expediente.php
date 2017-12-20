@@ -29,6 +29,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <input type="text" placeholder="Nro de Expediente" name="num_expediente" />
             <input type="text" placeholder="Nro Interno" name="num_interno" />
             <input type="text" placeholder="Escuela Nro" name="num_escuela"/>
+            <input type="text" placeholder="Iniciador" name="iniciador"/>
             <input type="submit" value="Buscar" name="buscar" />            
         </form>        
     </div>

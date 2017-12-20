@@ -63,17 +63,6 @@ class Expediente_model extends CI_Model {
         return $this->db->insert('pases', $data);
     }
     public function get_expediente($d){
-//        array(6) { ["ex_buscar_supervisor"]=> string(4) "none" ["ex_buscar_seccion"]=> string(1) "1" ["num_expediente"]=> string(0) "" 
-//        ["num_interno"]=> string(0) "" ["num_escuela"]=> string(0) "" ["buscar"]=> string(6) "Buscar" } 
-        
-//        $query = $this->db->query("YOUR QUERY");
-//
-//        foreach ($query->result() as $row)
-//        {
-//           echo $row->title;
-//           echo $row->name;
-//           echo $row->body;
-//        }
         
         $this->db->order_by('id_expediente', 'desc');
         if ($d['ex_buscar_supervisor'] !== 'none'){
@@ -90,6 +79,9 @@ class Expediente_model extends CI_Model {
         }
         if ($d['num_escuela'] !== ''){
             $this->db->where('num_escuela', $d['num_escuela']);
+        }
+        if ($d['iniciador'] !== ''){
+            $this->db->like('iniciador', $d['iniciador'], 'both');
         }
         $query = $this->db->get('expediente');
         return $query->result();

@@ -73,11 +73,12 @@ class Expediente extends CI_Controller {
                 $data['seccion'] = $this->supervisor_model->nuevo_nivel($data['seccion']);
             }
             
+            if ($data['iniciador'] === "new"){
+                $data['iniciador'] = $data['nuevo_iniciador'];
+            }
+            
             if ($data['dependencia'] === "new"){
-//                $t = $this->expediente_model->get_dependencia($data['dependencia']);
-//                if (sizeof($t) === 0){ //si no existe; agregar nuevo nivel
                 $data['dependencia'] = $this->expediente_model->nueva_dependencia($data['nueva_dependencia']);
-//                }
             }
             
             $res = $this->expediente_model->nuevo($data);

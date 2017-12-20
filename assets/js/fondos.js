@@ -86,7 +86,18 @@ $(document).ready(function(){
         return false;
     });
     $('#cancelar5').click(function(){
-        $(this).parent().parent('.edit-popup').fadeOut('slow');
+        $(this).parent().parent('.edit-popup').hide();
+        $('#fondo_gris').fadeOut('slow');
+        $('#edit_exp_pop input[type="text"]').each(function(){
+            $(this).val('');
+        });
+        $('#edit_exp_pop tr:gt(0)').each(function(){
+            $(this).remove();
+        });
+        return false;
+    });
+    $('#cerrar_popup_pase').click(function(){
+        $(this).parent().parent().parent('.edit-popup').hide();
         $('#fondo_gris').fadeOut('slow');
         $('#edit_exp_pop input[type="text"]').each(function(){
             $(this).val('');

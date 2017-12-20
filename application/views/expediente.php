@@ -273,7 +273,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div id="fondo_gris" class="gray-backgroud"></div>
 <div id="edit_exp_pop" class="edit-popup">
     <div class="popup-head">
-         <div class="close"><a href="#" id="cerrar_popup_pase"><i class="fa fa-window-close" aria-hidden="true"></i></a></div>
+        <div class="close"><a href="#" id="cerrar_popup_pase"><i class="fa fa-window-close" aria-hidden="true"></i></a></div>
         <h3>Expediente:</h3>
     </div>
     <div>

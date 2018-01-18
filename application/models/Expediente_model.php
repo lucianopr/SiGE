@@ -110,6 +110,15 @@ class Expediente_model extends CI_Model {
         );
         return $this->db->insert('pases', $data);
     }
+    public function edit_nro_exp($id, $num){
+        $data = array(
+            'num_expediente' => $num,
+        );
+
+        $this->db->where('id_expediente', $id);
+        return $this->db->update('expediente', $data);
+        
+    }
                 
 
 }

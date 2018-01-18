@@ -161,7 +161,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <input style="display: none;" type="text" id="nueva_modalidad" name="nueva_modalidad" placeholder="Ingrese la nueva modalidad" />
             </div>
             
-            <input type="text" id="referencia" placeholder="Ingrese una referencia" name="referencia" />
+            <input type="text" style="width: 100%" id="referencia" placeholder="Ingrese una referencia" name="referencia" />
             
             <input type="text" id="folio" placeholder="Folios" name="folio" />
             
@@ -281,9 +281,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <form action="<?php echo base_url();?>expediente/guardar">
             <!--fecha de ingreso-->
             <input type="text" class="datepicker" id="fecha_expte_edit" placeholder="Seleccione una fecha" name="fecha_ingreso" disabled="disabled" />
-            <input type="text" id="nro_transac_edit" disabled="disabled" name="nro_transac" title="éste nro se generará automaticamente al guardar el nuevo expediente." />
-            <input type="text" id="nro_expediente_edit" disabled="disabled" placeholder="Nro de Expediente" name="nro_expediente" />
-            <input type="text" id="nro_escuela_edit" disabled="disabled" placeholder="Nro de Escuela" name="nro_escuela" />
+            <input type="text" id="nro_transac_edit" disabled="disabled" name="nro_transac" title="Transacción" />
+            <input type="text" id="nro_expediente_edit" placeholder="Nro de Expediente" name="nro_expediente" title="Nro de Expediente" />
+            <input type="text" id="nro_escuela_edit" disabled="disabled" placeholder="Nro de Escuela" name="nro_escuela" title="Nro de Escuela" />
             
             <!--iniciador-->
             <div>
@@ -351,7 +351,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <input style="display: none;" type="text" id="nueva_modalidad" name="nueva_modalidad" placeholder="Ingrese la nueva modalidad" />
             </div>
             
-            <input type="text" id="referencia_edit" disabled="disabled" placeholder="Ingrese una referencia" name="referencia" />
+            <input type="text" style="width: 100%" id="referencia_edit" disabled="disabled" placeholder="Ingrese una referencia" name="referencia" />
             
             <!--<input type="text" id="folio_edit" disabled="disabled" placeholder="Folios" name="folio" />-->
             
@@ -377,7 +377,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
     <div>
         <!--<input id="guardar_expediente" type="button" value="Guardar" />-->
-        <input class="cancelar" id="cancelar5" type="button" value="Cancelar"  />
+        <input class="cancelar" id="cancelar5" type="button" value="Cerrar"  />
     </div>
 </div>
 
@@ -441,3 +441,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 
 <h2 id="pase_exito" style="display: <?php echo $pase;?>; background-color: lightgreen; top:0; width: 100%; position:absolute">Nuevo pase generado con éxito</h2>
+
+<div id="fondo_gris10" style="background-color: rgba(0, 0, 0, 0.4); height: 300%; position: absolute; width: 100%; display: none; top: 0; left: 0" class="gray-backgroud"></div>
+<div id="edit_nro_exp_popup" class="edit-popup" style="display: none;">
+    <div class="popup-head">
+         <div class="close"><a href="#" id="cerrar_popup_eliminar"><i class="fa fa-window-close" aria-hidden="true"></i></a></div>
+        <h3>Editar Nro Expediente:</h3>
+    </div>
+    <div>
+        <p id="eliminar_msj"></p>
+        <input id="cancelar_edit_exp" value="Cancelar" type="button">
+        <input id="editar_nro_expte" value="Guardar" type="button">
+    </div>
+</div>

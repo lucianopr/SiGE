@@ -281,6 +281,23 @@ $(document).ready(function(){
         }
     });
     
+    $('#nro_expediente_edit').change(function(){
+        var num = $('#nro_expediente_edit').val();
+        $('#fondo_gris10').show();
+        $('#eliminar_msj').html('Se cambiara el numero de expediente a '+num+'. Desea guardar el nuevo nro?');
+        $('#edit_nro_exp_popup').show();
+    });
+    $('#editar_nro_expte').click(function(){
+        var num = $('#nro_expediente_edit').val();
+        var id = $('#nro_transac_edit').val();
+        editar_nro_exp(num, id);
+    });
+    $('#cancelar_edit_exp').click(function(){
+        $('#edit_nro_exp_popup').hide();
+        $('#fondo_gris10').hide();
+        $('#cancelar5').click();
+    });
+    
 });
 
 function searchbox_toggle(){
@@ -484,4 +501,21 @@ function poblar_exp_edit(e, p){
     }
 //    $('#myTable tr:last').after('<tr>...</tr><tr>...</tr>');
     
+}
+
+function editar_nro_exp(num, id){
+    $.ajax({
+        url: '/expediente/edit_nro_exp',
+        method: 'POST',
+        data: 'id='+id+'&num='+num,
+        dataType: 'json',
+        success: function(){
+            alert('El nuevo nro. fue modificado correctamente.');
+        },
+        error: function(data){
+            alert('ocurrió un error ('+data+'). Intente de nuevo o contacte al administrador del sistema.');
+        }
+    });
+    $('#edit_nro_exp_popup').hide();
+    $('#fondo_gris10').hide();
 }

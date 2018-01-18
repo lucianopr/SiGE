@@ -129,4 +129,15 @@ class Expediente extends CI_Controller {
             redirect(base_url().'expediente?nuevo_pase=yes');
         }
         
+        public function edit_nro_exp(){
+            $this->load->helper('url');
+            $this->load->model('expediente_model');
+            $data = $_POST;
+            $id = $_POST['id'];
+            $n = $_POST['num'];
+            
+            $res = $this->expediente_model->edit_nro_exp($id, $n);
+            die($res);
+        }
+        
 }
